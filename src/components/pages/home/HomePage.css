@@ -1,0 +1,18 @@
+.home-page-header {
+    font-size: 4rem;
+    font-weight: light;
+}
+
+.home-page-content {
+    margin-top: 1.5%;
+    width: 30%;
+    font-size: 1.1rem;
+    line-height: 200%;
+}
+
+.home-page-links {
+    margin-top: 0.5%;
+    width: 30%;
+    font-size: 1.1rem;
+    line-height: 100%;
+}
