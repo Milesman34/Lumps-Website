@@ -1,4 +1,4 @@
-.header {
+.game-header {
     width: 100%;
 
     background-color: rgb(134, 166, 180);
@@ -6,12 +6,13 @@
     border-bottom: 2px solid black;
 
     display: grid;
+    grid-template-columns: repeat(3, auto);
 
     position: sticky;
     top: 0;
 }
 
-.header-item {
+.game-header-item {
     display: flex;
 
     flex-direction: column;
@@ -28,6 +29,6 @@
     padding-bottom: 2%;
 }
 
-.header-item:hover {
+.game-header-item:hover {
     background-color: rgb(148, 177, 188);
 }
