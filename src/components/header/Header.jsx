@@ -4,8 +4,17 @@ import { A } from "hookrouter"
 
 import { capitalize } from "../../utils.js"
 
+import { useEffect, useRef } from "react"
+
 // Main header component for the app
 export default () => {
+    // Ref for this element
+    const elementRef = useRef(null);
+
+    useEffect(() => {
+        console.log(elementRef.current.offsetHeight);
+    }, [elementRef])
+
     // Array of names for pages
     const pageNames = ["home", "basics", "game"]
 
@@ -15,7 +24,7 @@ export default () => {
     );
 
     return (
-        <div className="header" style={{ gridTemplateColumns: `repeat(${links.length}, auto)` }}>
+        <div className="header" ref={elementRef} style={{ gridTemplateColumns: `repeat(${links.length}, auto)` }}>
             {links}
         </div>
     );
