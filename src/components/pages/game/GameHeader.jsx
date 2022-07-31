@@ -1,4 +1,4 @@
-import Header from "../../../common/header/Header";
+import Header from "../../common/header/Header";
 
 // Route objects for the main header
 const routeObjects = [
