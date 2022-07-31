@@ -3,7 +3,7 @@ import "./GamePage.css"
 import { useRoutes } from "hookrouter"
 
 import GameRouter from "./GameRouter"
-import GameHeader from "./header/GameHeader";
+import GameHeader from "./GameHeader"
 
 // Main page for the website
 export default () => {

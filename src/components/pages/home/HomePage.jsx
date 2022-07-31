@@ -15,7 +15,8 @@ export default () => {
 
             <div className="home-page-links">
                 <p>For more information, click <A href="/basics">here</A></p>
-                <p>To play the game on this website, click <A href="/game">here</A></p>
+                <p>To play the game on this website, click <A href="/game/game">here</A></p>
+                <p>To read about game strategy, click <A href="/strategy">here</A></p>
             </div>
         </div>
     );
