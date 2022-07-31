@@ -2,7 +2,6 @@ import "./NavigationHeader.css"
 
 import { capitalize } from "../../../utils.js"
 import { useSelector } from "react-redux";
-import { useEffect } from "react";
 
 // This header can be used to navigate between parts of a page
 export default ({ links, name }) => {
