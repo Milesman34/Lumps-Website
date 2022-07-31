@@ -2,16 +2,31 @@ import "./Header.css"
 
 import { A } from "hookrouter"
 
-import { capitalize } from "../../utils.js"
-
 // Main header component for the app
 export default () => {
-    // Array of names for pages
-    const pageNames = ["home", "basics", "game", "strategy"]
+    // Array of routes (with names)
+    const routeObjects = [
+        {
+            name: "Home",
+            route: "/home"
+        },
+        {
+            name: "Basics",
+            route: "/basics"
+        },
+        {
+            name: "Game",
+            route: "/game/game"
+        },
+        {
+            name: "Strategy",
+            route: "/strategy"
+        }
+    ]
 
     // Array of link objects to use
-    const links = pageNames.map(pageName =>
-        <A className="header-item" key={pageName} href={`/${pageName}`}>{capitalize(pageName)}</A>
+    const links = routeObjects.map(routeObjects =>
+        <A className="header-item" key={routeObjects.name} href={routeObjects.route}>{routeObjects.name}</A>
     );
 
     return (

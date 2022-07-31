@@ -6,7 +6,7 @@ import Header from "./components/header/Header";
 
 import Router from "./Router"
 
-function App() {
+export default () => {
 	const routeResult = useRoutes(Router);
 
 	return (
@@ -16,5 +16,3 @@ function App() {
 		</div>
 	)
 }
-
-export default App

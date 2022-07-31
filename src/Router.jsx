@@ -7,7 +7,7 @@ import StrategyPage from "./components/pages/strategy/StrategyPage"
 const routes = {
 	"/home": () => <HomePage />,
 	"/basics": () => <BasicsPage />,
-	"/game": () => <GamePage />,
+	"/game*": () => <GamePage />,
 	"/strategy": () => <StrategyPage />
 };
 
