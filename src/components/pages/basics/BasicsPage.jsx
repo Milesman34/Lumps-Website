@@ -41,6 +41,12 @@ export default () => {
                     <p>There are 2 4-sided dice, 2 6-sided dice, 2 8-sided dice, and 2 10-sided dice.</p>
                 </div>
 
+                <div className="basics-page-heading">Where to buy</div>
+
+                <div className="basics-page-content">
+                    <p><a href="https://continuumgames.com/product/lumps-non-seasonal-edition/#:~:text=The%20dice%20game%20of%20big,score%20the%20most%20points%20possible." target="_blank">Here</a> is a link to the Continuum Games website where you can purchase Lumps. </p>
+                </div>
+
                 <div className="basics-page-heading">Scoring</div>
 
                 <div className="basics-page-content">
