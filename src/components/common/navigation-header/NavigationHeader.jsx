@@ -1,6 +1,8 @@
 import "./NavigationHeader.css"
 
 import { capitalize } from "../../../utils.js"
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 // This header can be used to navigate between parts of a page
 export default ({ links, name }) => {
@@ -9,7 +11,7 @@ export default ({ links, name }) => {
 
     // The top offset for the element's position is calculated from the header's height
     // Since position: sticky does not handle this automatically, we need to know the height of the header to place the navigation header at the right position
-    const offset = 42;
+    const offset = useSelector(state => state.uiAttributes.headerHeight);
 
     return (
         <div className="navigation-header" style={{ top: offset }}>

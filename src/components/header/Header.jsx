@@ -4,16 +4,31 @@ import { A } from "hookrouter"
 
 import { capitalize } from "../../utils.js"
 
+import { setHeaderHeight } from "../../redux/actions"
+
 import { useEffect, useRef } from "react"
+import { useDispatch } from "react-redux"
 
 // Main header component for the app
 export default () => {
+    // Redux dispatch
+    const dispatch = useDispatch();
+
     // Ref for this element
     const elementRef = useRef(null);
 
+    // This effect should run on every resize, updating the header height as needed
     useEffect(() => {
-        console.log(elementRef.current.offsetHeight);
-    }, [elementRef])
+        const updateSize = () => {
+            dispatch(setHeaderHeight(elementRef.current.offsetHeight));
+        };
+
+        window.addEventListener("resize", updateSize);
+
+        updateSize();
+
+        return () => window.removeEventListener("resize", updateSize);
+    }, [])
 
     // Array of names for pages
     const pageNames = ["home", "basics", "game"]
