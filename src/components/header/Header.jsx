@@ -7,7 +7,7 @@ import { capitalize } from "../../utils.js"
 // Main header component for the app
 export default () => {
     // Array of names for pages
-    const pageNames = ["home", "basics", "game"]
+    const pageNames = ["home", "basics", "game", "strategy"]
 
     // Array of link objects to use
     const links = pageNames.map(pageName =>

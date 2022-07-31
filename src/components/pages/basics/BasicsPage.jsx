@@ -107,6 +107,9 @@ export default () => {
 
                 <div className="basics-page-content">
                     <p>There are several variations in how you can play the game.</p>
+                    <p>For starters, after someone reaches 100 points, you can continue playing until everyone has had the same number of turns. If there is a tie, then each tied player takes more turns until the tie is broken.</p>
+                    <p>You can also do Clean Slates, where you can re-roll all of your dice after a roll. If you do that after your first roll, you must keep 6 dice on the next roll. If you do it after your second roll, you must keep all 8. You can decide if a player should be allowed to do this more than once in a turn.</p>
+                    <p>You can also do Desperation, where you can re-roll all of your dice after the end of your turn, keeping the result. You can decide if a player should be allowed to do this more than once per game.</p>
                 </div>
             </div>
         </div>
