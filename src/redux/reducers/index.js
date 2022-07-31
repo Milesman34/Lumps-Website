@@ -1,8 +1,4 @@
-import UIAttributesReducer from "./UIAttributesReducer"
-
 import { combineReducers } from "redux"
 
-// Root reducer for the app
-export const RootReducer = combineReducers({
-    uiAttributes: UIAttributesReducer
-});
+// Root reducer for the app (don't have any reducers yet)
+export const RootReducer = combineReducers({});

@@ -1,8 +1,6 @@
 import "./BasicsPage.css"
 import "../pages.css"
 
-import NavigationHeader from "../../common/navigation-header/NavigationHeader"
-
 // Main page for the website
 export default () => {
     // List of examples for group scoring
@@ -34,10 +32,8 @@ export default () => {
 
     return (
         <div className="page-container">
-            <NavigationHeader links={["information", "scoring"]} name="basics" />
-
-            <div className="page">
-                <div id="basics/information" className="basics-page-heading">Information</div>  
+            <div className="page basics-page">
+                <div className="basics-page-heading">Information</div>
 
                 <div className="basics-page-content">
                     <p>In Lumps, the goal is to reach 100 points before your opponents. Each player takes turns in order, and you can have any number of players. The player who reaches 100 points first wins.</p>
@@ -45,7 +41,7 @@ export default () => {
                     <p>There are 2 4-sided dice, 2 6-sided dice, 2 8-sided dice, and 2 10-sided dice.</p>
                 </div>
 
-                <div id="basics/scoring" className="basics-page-heading">Scoring</div>
+                <div className="basics-page-heading">Scoring</div>
 
                 <div className="basics-page-content">
                     <p>After each turn, calculate your score and add it to your total.</p>
@@ -68,7 +64,7 @@ export default () => {
                     </ul>
 
                     <p className="basics-page-h2">Runs</p>
-                    
+
                     <p>You can get bonus points by having runs of consecutive numbers.</p>
                     <p>These runs can have pairs in them, so (1 2 2 3 4 4 5 6) would be a valid run.</p>
                     <p>If you have a run of 6, you get 10 points.</p>
@@ -80,7 +76,7 @@ export default () => {
 
                     <ul className="basics-page-examples">
                         {
-                            runScoringExamples.map((example, index) => 
+                            runScoringExamples.map((example, index) =>
                                 <li key={index}>{example}</li>
                             )
                         }
@@ -99,6 +95,12 @@ export default () => {
                             )
                         }
                     </ul>
+                </div>
+
+                <div className="basics-page-heading">Variations</div>
+
+                <div className="basics-page-content">
+                    <p>There are several variations in how you can play the game.</p>
                 </div>
             </div>
         </div>
