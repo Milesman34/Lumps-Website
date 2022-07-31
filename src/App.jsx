@@ -2,7 +2,7 @@ import './App.css'
 
 import { useRoutes } from "hookrouter";
 
-import Header from "./components/header/Header";
+import MainHeader from "./components/MainHeader";
 
 import Router from "./Router"
 
@@ -11,7 +11,7 @@ export default () => {
 
 	return (
 		<div className="app">
-			<Header />
+			<MainHeader />
 			{routeResult}
 		</div>
 	)

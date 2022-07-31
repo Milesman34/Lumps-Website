@@ -1,0 +1,49 @@
+/* The header classes are shared between all objects of this type */
+/* There are also specialized classes for each header type, which we pass classPrefix as a prop for */
+.header {
+    width: 100%;
+
+    background-color: rgb(134, 166, 180);
+
+    border-bottom: 2px solid black;
+
+    display: grid;
+}
+
+.header-item {
+    display: flex;
+
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    color: black;
+    text-decoration: none;
+    user-select: none;
+}
+
+.header-item:hover {
+    background-color: rgb(148, 177, 188);
+}
+
+/* Now we have the more specialized classes */
+.main-header {
+    position: sticky;
+    top: 0;
+}
+
+.main-header-item {
+    font-size: 1.5rem;
+
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+/* Now we have the more specialized classes */
+.game-header-item {
+    font-size: 1rem;
+
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+}
