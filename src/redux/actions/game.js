@@ -25,3 +25,9 @@ export const addScore = score => ({
     type: "ADD_SCORE",
     payload: score
 });
+
+// Sets if the game is being played
+export const setIsBeingPlayed = value => ({
+    type: "SET_IS_BEING_PLAYED",
+    payload: value
+});

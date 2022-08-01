@@ -54,6 +54,12 @@ export default (state = initialState, action) => {
                 scores: state.scores.map((score, index) => index === state.currentIndex ? score + action.payload : score)
             }
 
+        case "SET_IS_BEING_PLAYED":
+            return {
+                ...state,
+                isBeingPlayed: action.payload
+            }
+
         default:
             return state;
     }
