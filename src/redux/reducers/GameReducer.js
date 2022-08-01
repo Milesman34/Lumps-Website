@@ -15,7 +15,10 @@ const initialState = {
     rollsLeft: 3,
 
     // The current dice the player has
-    dice: [4, 4, 6, 6, 8, 8, 10, 10].map(sides => Die(sides))
+    dice: [4, 4, 6, 6, 8, 8, 10, 10].map(sides => Die(sides)),
+
+    // Is the game currently being played?
+    isBeingPlayed: false
 }
 
 // Reducer for key state elements of the game

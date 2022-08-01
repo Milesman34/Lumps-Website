@@ -7,6 +7,10 @@ const routeObjects = [
         route: "/game/game"
     },
     {
+        name: "Scoreboard",
+        route: "/game/scoreboard"
+    },
+    {
         name: "Configs",
         route: "/game/configs"
     }
