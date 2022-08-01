@@ -3,3 +3,16 @@
 
     flex-direction: column;
 }
+
+.game-score-display {
+    margin-top: 2.5%;
+
+    display: flex;
+
+    flex-direction: row;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 2.5rem;
+}
