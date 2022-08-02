@@ -21,10 +21,10 @@ export default () => {
         const parsed = parseInt(playersText);
 
         // Check if the number can be parsed
-        if (isNaN(parsed) || parsed < 2 || parsed > 8) {
-            setWarningText("Enter a number between 2 and 8!")
+        if (isNaN(parsed) || parsed < 1 || parsed > 8) {
+            setWarningText("Enter a number between 1 and 8!")
         } else {
-            dispatch(setIsBeingPlayed(true));
+            dispatch(setIsBeingPlayed(true));   
 
             dispatch(setNumPlayers(parsed));
 

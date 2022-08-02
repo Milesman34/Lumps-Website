@@ -1,12 +1,8 @@
-import { useSelector } from "react-redux";
-import { selectGameComponentRoute } from "../redux/selectors/game";
+
 import Header from "./common/header/Header";
 
 // Creates the main header
 export default () => {
-    // Selects the game component route
-    const route = useSelector(selectGameComponentRoute);
-
     // Route objects for the main header
     const routeObjects = [
         {
@@ -19,7 +15,7 @@ export default () => {
         },
         {
             name: "Game",
-            route: `/game/${route}`
+            route: `/game/game`
         },
         {
             name: "Strategy",
