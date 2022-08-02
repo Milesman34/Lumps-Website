@@ -27,7 +27,9 @@ export default (state = initialState, action) => {
         case "SET_NUM_PLAYERS":
             return {
                 ...state,
-                numPlayers: action.payload
+                numPlayers: action.payload,
+                // Scores are also reset when changing the number of players
+                scores: Array(action.payload).fill(0)
             }
 
         case "SET_CURRENT_INDEX":

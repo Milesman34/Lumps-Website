@@ -1,23 +1,36 @@
 import { navigate } from "hookrouter";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { setIsBeingPlayed } from "../../../../../redux/actions/game";
+import { setIsBeingPlayed, setNumPlayers } from "../../../../../redux/actions/game";
 import "./GameStartScreen.css"
 
 // Component for the game's start screen
 export default () => {
     // Dispatch for this component
     const dispatch = useDispatch();
-    
+
     // Current text for the number of players
     const [playersText, setPlayersText] = useState("");
 
+    // Current warning text
+    const [warningText, setWarningText] = useState("");
+
     // Starts the game
     const startGame = () => {
-        dispatch(setIsBeingPlayed(true));
+        // Parsed int value
+        const parsed = parseInt(playersText);
 
-        // Navigates to the game
-        navigate("/game/game");
+        // Check if the number can be parsed
+        if (isNaN(parsed) || parsed < 2 || parsed > 8) {
+            setWarningText("Enter a number between 2 and 8!")
+        } else {
+            dispatch(setIsBeingPlayed(true));
+
+            dispatch(setNumPlayers(parsed));
+
+            // Navigates to the game
+            navigate("/game/game");
+        }
     }
 
     // Handles changes to the input
@@ -28,6 +41,8 @@ export default () => {
     return (
         <div className="game-start-screen">
             <input type="text" placeholder="Number of Players" onChange={handleChange} name="players" value={playersText} className="game-start-input" />
+
+            {warningText === "" ? <span className="game-start-warning"></span> : <div className="game-start-warning">{warningText}</div>}
 
             <button onClick={startGame} className="game-start-button">Start Game</button>
         </div>
