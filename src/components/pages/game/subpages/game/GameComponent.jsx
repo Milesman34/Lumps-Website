@@ -57,7 +57,7 @@ export default () => {
                 {dieComponents}
             </div>
 
-            {isTurnOver ? <span /> : <GameRollButton />}
+            {isTurnOver || <GameRollButton />}
 
             <EndTurnButton />
         </div>
