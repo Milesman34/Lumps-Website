@@ -38,13 +38,35 @@ const selectNumDiceMustKeep = state => {
     }
 }
 
+// Returns the number of dice that will be locked
+const selectNumDiceWillBeLocked = state => state.game.dice.filter(die => die.willBeLocked).length;
+
+// Selects how many more dice the player must keep
+const selectNumMoreDiceToKeep = state => {
+    const mustKeep = selectNumDiceMustKeep(state);
+    const willBeLocked = selectNumDiceWillBeLocked(state);
+
+    return mustKeep - willBeLocked;
+}
+
+// Can the player roll the dice?
+const selectCanRollDice = state => {
+    const mustKeep = selectNumDiceMustKeep(state);
+    const willBeLocked = selectNumDiceWillBeLocked(state);
+
+    return willBeLocked >= mustKeep;
+}
+
 export {
     selectBeingPlayed,
+    selectCanRollDice,
     selectCurrentIndex,
     selectCurrentScore,
     selectDice,
     selectNumDiceMustKeep,
+    selectNumMoreDiceToKeep,
     selectNumUnlockedDice,
+    selectNumDiceWillBeLocked,
     selectRollsLeft,
     selectScores
 }

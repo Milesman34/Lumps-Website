@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux"
-import { selectCurrentIndex, selectCurrentScore, selectDice, selectNumDiceMustKeep, selectRollsLeft } from "../../../../../redux/selectors/game"
+import { selectCanRollDice, selectCurrentIndex, selectCurrentScore, selectDice, selectNumMoreDiceToKeep, selectRollsLeft } from "../../../../../redux/selectors/game"
 import "./GameComponent.css"
 
 import DieComponent from "./die/DieComponent"
@@ -15,8 +15,11 @@ export default () => {
     // Number of rolls left in this turn
     const rollsLeft = useSelector(selectRollsLeft);
 
-    // Number of dice you must keep
-    const numDiceMustKeep = useSelector(selectNumDiceMustKeep);
+    // Can the player roll the dice
+    const canRoll = useSelector(selectCanRollDice);
+
+    // How many more dice must the player keep
+    const howManyMore = useSelector(selectNumMoreDiceToKeep)
 
     // Current list of dice
     const dice = useSelector(selectDice);
@@ -24,8 +27,16 @@ export default () => {
     // Returns the text used to display the number of rolls left
     const rollsLeftText = () => rollsLeft === 2 ? "2 Rolls Left" : rollsLeft === 1 ? "1 Roll Left" : "No Rolls Left";
 
-    // Returns the text used to display the number of dice you must keep
-    const diceKeepText = () => numDiceMustKeep === 1 ? "You must keep 1 die" : rollsLeft > 0 ? `You must keep ${numDiceMustKeep} dice` : ""; 
+    // Text for the roll dice button
+    const rollDiceText = () => {
+        if (canRoll) {
+            return "Roll Dice";
+        } else if (howManyMore === 1) {
+            return "You must keep 1 more die"
+        } else {
+            return `You must keep ${howManyMore} more dice`
+        }
+    }
 
     // List of die components to render
     const dieComponents = dice.map((die, index) => <DieComponent key={index} index={index} die={die} />);
@@ -46,12 +57,14 @@ export default () => {
                 {rollsLeftText()}
             </div>
 
-            <div className="game-display-text game-dice-keep-display">
-                {diceKeepText()}
-            </div>
-
             <div className="game-dice-container">
                 {dieComponents}
+            </div>
+
+            <div style={{ display: "flex", flexDirection: "row", justifyContent: "center" }}>
+                <div className="roll-dice-button">
+                    {rollDiceText()}
+                </div>
             </div>
         </div>
     );
