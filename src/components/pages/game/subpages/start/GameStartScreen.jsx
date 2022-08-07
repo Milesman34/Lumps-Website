@@ -1,4 +1,3 @@
-import { navigate } from "hookrouter";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { setIsBeingPlayed, setNumPlayers } from "../../../../../redux/actions/game";
@@ -27,9 +26,6 @@ export default () => {
             dispatch(setIsBeingPlayed(true));   
 
             dispatch(setNumPlayers(parsed));
-
-            // Navigates to the game
-            navigate("/game/game");
         }
     }
 
@@ -40,7 +36,7 @@ export default () => {
 
     return (
         <div className="game-start-screen">
-            <input type="text" placeholder="Number of Players" onChange={handleChange} name="players" value={playersText} className="game-start-input" />
+            <input type="text" placeholder="Number of Players (1-8)" onChange={handleChange} name="players" value={playersText} className="game-start-input" />
 
             {warningText === "" ? <span className="game-start-warning"></span> : <div className="game-start-warning">{warningText}</div>}
 
