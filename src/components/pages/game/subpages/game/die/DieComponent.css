@@ -4,7 +4,6 @@
     height: 100px;
     font-size: 2rem;
     user-select: none;
-    cursor: pointer;
 
     display: flex;
 
@@ -21,6 +20,7 @@
 
 .die-unlocked {
     background-color: rgb(222, 222, 222);
+    cursor: pointer;
 }
 
 .die-unlocked:hover {
@@ -33,6 +33,7 @@
 
 .die-will-be-locked {
     background-color: rgb(180, 180, 180);
+    cursor: pointer;
 }
 
 .die-will-be-locked:hover {

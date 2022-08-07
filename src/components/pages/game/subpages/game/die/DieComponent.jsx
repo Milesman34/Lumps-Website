@@ -15,11 +15,9 @@ export default ({ die, index }) => {
         event.preventDefault();
 
         // Toggles if this die will be locked, if the die isn't already locked
-        if (!die.locked) {
+        if (!die.isLocked) {
             dispatch(toggleDieWillBeLocked(index));
         }
-
-        console.log(die);
     }
 
     return (

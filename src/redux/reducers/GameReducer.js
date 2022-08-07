@@ -78,6 +78,29 @@ export default (state = initialState, action) => {
                 } : die)
             }
 
+        // Rolls all unlocked dice
+        case "ROLL_DICE":
+            return {
+                ...state,
+                rollsLeft: state.rollsLeft - 1,
+                dice: state.dice.map(die => {
+                    if (die.isLocked) { // Nothing changes
+                        return die;
+                    } else if (die.willBeLocked) { // Die becomes locked
+                        return {
+                            ...die,
+                            isLocked: true,
+                            willBeLocked: false
+                        }
+                    } else { // Reroll die
+                        return {
+                            ...die,
+                            value: die.roll()
+                        }
+                    }
+                })
+            }
+
         default:
             return state;
     }

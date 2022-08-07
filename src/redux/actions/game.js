@@ -38,9 +38,14 @@ export const toggleDieWillBeLocked = index => ({
     payload: index
 });
 
+// Rolls any unlocked dice
+export const rollDice = () => ({
+    type: "ROLL_DICE"
+});
+
 // Resets the game (this is not an action, but can be called by passing dispatch)
 export const resetGame = dispatch => {
-    dispatch(resetScores()),
-    dispatch(setCurrentIndex(0)),
-    dispatch(setIsBeingPlayed(true))
+    dispatch(resetScores());
+    dispatch(setCurrentIndex(0));
+    dispatch(setIsBeingPlayed(true));
 };

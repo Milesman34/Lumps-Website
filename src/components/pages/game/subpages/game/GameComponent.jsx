@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux"
-import { selectCurrentIndex, selectCurrentScore, selectDice, selectRollsLeft } from "../../../../../redux/selectors/game"
+import { selectCurrentIndex, selectCurrentScore, selectDice, selectIsTurnOver, selectRollsLeft } from "../../../../../redux/selectors/game"
 import "./GameComponent.css"
 
 import DieComponent from "./die/DieComponent"
@@ -16,11 +16,22 @@ export default () => {
     // Number of rolls left in this turn
     const rollsLeft = useSelector(selectRollsLeft);
 
+    // Is the player's turn over
+    const isTurnOver = useSelector(selectIsTurnOver);
+
     // Current list of dice
     const dice = useSelector(selectDice);
 
     // Returns the text used to display the number of rolls left
-    const rollsLeftText = () => rollsLeft === 2 ? "2 Rolls Left" : rollsLeft === 1 ? "1 Roll Left" : "No Rolls Left";
+    const rollsLeftText = () => {
+        if (isTurnOver) {
+            return "No Rolls Left";
+        } else if (rollsLeft === 2) {
+            return "2 Rolls Left";
+        } else {
+            return "1 Roll Left";
+        }
+    }
 
     // List of die components to render
     const dieComponents = dice.map((die, index) => <DieComponent key={index} index={index} die={die} />);

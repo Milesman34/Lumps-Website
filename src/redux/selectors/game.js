@@ -57,12 +57,22 @@ const selectCanRollDice = state => {
     return willBeLocked >= mustKeep;
 }
 
+// Is the player's turn over?
+const selectIsTurnOver = state => {
+    const numUnlocked = selectNumUnlockedDice(state);
+    const rollsLeft = selectRollsLeft(state);
+
+    // If there are only 2 dice left, then there aren't any decisions for the player to make
+    return numUnlocked <= 2 || rollsLeft === 0;
+}
+
 export {
     selectBeingPlayed,
     selectCanRollDice,
     selectCurrentIndex,
     selectCurrentScore,
     selectDice,
+    selectIsTurnOver,
     selectNumDiceMustKeep,
     selectNumMoreDiceToKeep,
     selectNumUnlockedDice,
