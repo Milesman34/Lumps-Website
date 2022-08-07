@@ -31,3 +31,10 @@ export const setIsBeingPlayed = value => ({
     type: "SET_IS_BEING_PLAYED",
     payload: value
 });
+
+// Resets the game (this is not an action, but can be called by passing dispatch)
+export const resetGame = dispatch => {
+    dispatch(resetScores()),
+    dispatch(setCurrentIndex(0)),
+    dispatch(setIsBeingPlayed(true))
+};

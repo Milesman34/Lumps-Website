@@ -24,6 +24,7 @@ const initialState = {
 // Reducer for key state elements of the game
 export default (state = initialState, action) => {
     switch (action.type) {
+        // Sets the number of players
         case "SET_NUM_PLAYERS":
             return {
                 ...state,
@@ -32,34 +33,45 @@ export default (state = initialState, action) => {
                 scores: Array(action.payload).fill(0)
             }
 
+        // Sets the current player index
         case "SET_CURRENT_INDEX":
             return {
                 ...state,
                 currentIndex: action.payload
             }
 
+        // Increments the current player index
         case "INCREMENT_CURRENT_INDEX":
             return {
                 ...state,
                 currentIndex: (state.currentIndex + 1) % state.numPlayers
             }
 
+        // Resets the scores
         case "RESET_SCORES":
             return {
                 ...state,
                 scores: Array(state.numPlayers).fill(0)
             }
 
+        // Adds to the current score
         case "ADD_SCORE":
             return {
                 ...state,
                 scores: state.scores.map((score, index) => index === state.currentIndex ? score + action.payload : score)
             }
 
+        // Sets if the game is being played
         case "SET_IS_BEING_PLAYED":
             return {
                 ...state,
                 isBeingPlayed: action.payload
+            }
+
+        // Restarts the game
+        case "RESET_GAME":
+            return {
+                ...state
             }
 
         default:

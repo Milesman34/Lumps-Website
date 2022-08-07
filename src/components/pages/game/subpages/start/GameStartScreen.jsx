@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { setIsBeingPlayed, setNumPlayers } from "../../../../../redux/actions/game";
+import { resetGame, setNumPlayers } from "../../../../../redux/actions/game";
 import "./GameStartScreen.css"
 
 // Component for the game's start screen
@@ -23,9 +23,8 @@ export default () => {
         if (isNaN(parsed) || parsed < 1 || parsed > 8) {
             setWarningText("Enter a number between 1 and 8!")
         } else {
-            dispatch(setIsBeingPlayed(true));   
-
             dispatch(setNumPlayers(parsed));
+            resetGame(dispatch);
         }
     }
 

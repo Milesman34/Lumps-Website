@@ -8,7 +8,9 @@ import { Provider } from "react-redux"
 import { RootReducer } from './redux/reducers/index'
 
 // Core store for the app
-const store = configureStore({ reducer: RootReducer });
+const store = configureStore({ 
+	reducer: RootReducer
+});
 
 ReactDOM.createRoot(document.getElementById('root')).render(
 	<Provider store={store}>

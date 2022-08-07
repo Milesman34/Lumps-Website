@@ -16,3 +16,7 @@
 
     background-color: rgb(222, 222, 222);
 }
+
+.die:hover {
+    background-color: white;
+}
