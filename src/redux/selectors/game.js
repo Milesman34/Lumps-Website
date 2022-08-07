@@ -15,10 +15,14 @@ const selectCurrentIndex = state => state.game.currentIndex;
 // Selects the dice
 const selectDice = state => state.game.dice;
 
+// Selects the number of rolls left
+const selectRollsLeft = state => state.game.rollsLeft;
+
 export {
     selectBeingPlayed,
     selectCurrentIndex,
     selectCurrentScore,
     selectDice,
+    selectRollsLeft,
     selectScores
 }

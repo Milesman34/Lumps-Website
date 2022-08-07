@@ -4,9 +4,7 @@
     flex-direction: column;
 }
 
-.game-turn-display {
-    margin-top: 2.5%;
-
+.game-display-text {
     display: flex;
 
     flex-direction: row;
@@ -14,18 +12,20 @@
     align-items: center;
     justify-content: center;
 
+}
+
+.game-turn-display {
+    margin-top: 2.5%;
+
     font-size: 2rem;
 }
 
 .game-score-display {
-    display: flex;
-
-    flex-direction: row;
-
-    align-items: center;
-    justify-content: center;
-
     font-size: 2.5rem;
+}
+
+.game-rolls-left-display {
+    font-size: 1.5rem;
 }
 
 .game-dice-container {
