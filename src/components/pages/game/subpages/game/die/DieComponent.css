@@ -13,10 +13,28 @@
     justify-content: center;
 
     margin: 25px;
+}
 
+.die-unlocked:hover {
+    background-color: white;
+}
+
+.die-unlocked {
     background-color: rgb(222, 222, 222);
 }
 
-.die:hover {
-    background-color: white;
+.die-unlocked:hover {
+    background-color: rgb(235, 235, 235);
+}
+
+.die-locked {
+    background-color: rgb(150, 150, 150);
+}
+
+.die-will-be-locked {
+    background-color: rgb(180, 180, 180);
+}
+
+.die-will-be-locked:hover {
+    background-color: rgb(195, 195, 195);
 }

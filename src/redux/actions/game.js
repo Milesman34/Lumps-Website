@@ -32,6 +32,12 @@ export const setIsBeingPlayed = value => ({
     payload: value
 });
 
+// Toggles if a given die will be locked
+export const toggleDieWillBeLocked = index => ({
+    type: "TOGGLE_DIE_WILL_BE_LOCKED",
+    payload: index
+});
+
 // Resets the game (this is not an action, but can be called by passing dispatch)
 export const resetGame = dispatch => {
     dispatch(resetScores()),

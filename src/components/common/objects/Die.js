@@ -9,5 +9,8 @@ export default sides => ({
     sides,
 
     // Is the die currently locked?
-    isLocked: false
+    isLocked: false,
+
+    // Will the current die be locked when the next roll happens?
+    willBeLocked: false
 });

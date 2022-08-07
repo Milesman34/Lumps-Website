@@ -68,10 +68,14 @@ export default (state = initialState, action) => {
                 isBeingPlayed: action.payload
             }
 
-        // Restarts the game
-        case "RESET_GAME":
+        // Toggles if a die will be locked
+        case "TOGGLE_DIE_WILL_BE_LOCKED":
             return {
-                ...state
+                ...state,
+                dice: state.dice.map((die, index) => index === action.payload ? {
+                    ...die,
+                    willBeLocked: !die.willBeLocked
+                } : die)
             }
 
         default:

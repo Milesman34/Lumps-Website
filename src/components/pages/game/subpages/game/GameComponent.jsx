@@ -16,7 +16,7 @@ export default () => {
     const dice = useSelector(selectDice);
 
     // List of die components to render
-    const dieComponents = dice.map((die, index) => <DieComponent key={index} die={die} />);
+    const dieComponents = dice.map((die, index) => <DieComponent key={index} index={index} die={die} />);
 
     return (
         <div className="game-component">
