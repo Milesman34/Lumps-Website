@@ -12,9 +12,13 @@ const selectBeingPlayed = state => state.game.isBeingPlayed;
 // Selects the index of the current player
 const selectCurrentIndex = state => state.game.currentIndex;
 
+// Selects the dice
+const selectDice = state => state.game.dice;
+
 export {
     selectBeingPlayed,
     selectCurrentIndex,
     selectCurrentScore,
+    selectDice,
     selectScores
 }
