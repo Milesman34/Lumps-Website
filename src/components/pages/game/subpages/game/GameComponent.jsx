@@ -1,9 +1,10 @@
 import { useSelector } from "react-redux"
-import { selectCanRollDice, selectCurrentIndex, selectCurrentScore, selectDice, selectNumMoreDiceToKeep, selectRollsLeft } from "../../../../../redux/selectors/game"
+import { selectCurrentIndex, selectCurrentScore, selectDice, selectRollsLeft } from "../../../../../redux/selectors/game"
 import "./GameComponent.css"
 
 import DieComponent from "./die/DieComponent"
 import GameScoreHeader from "./score-header/GameScoreHeader"
+import GameRollButton from "./roll-button/GameRollButton"
 
 export default () => {
     // Current score
@@ -15,28 +16,11 @@ export default () => {
     // Number of rolls left in this turn
     const rollsLeft = useSelector(selectRollsLeft);
 
-    // Can the player roll the dice
-    const canRoll = useSelector(selectCanRollDice);
-
-    // How many more dice must the player keep
-    const howManyMore = useSelector(selectNumMoreDiceToKeep)
-
     // Current list of dice
     const dice = useSelector(selectDice);
 
     // Returns the text used to display the number of rolls left
     const rollsLeftText = () => rollsLeft === 2 ? "2 Rolls Left" : rollsLeft === 1 ? "1 Roll Left" : "No Rolls Left";
-
-    // Text for the roll dice button
-    const rollDiceText = () => {
-        if (canRoll) {
-            return "Roll Dice";
-        } else if (howManyMore === 1) {
-            return "You must keep 1 more die"
-        } else {
-            return `You must keep ${howManyMore} more dice`
-        }
-    }
 
     // List of die components to render
     const dieComponents = dice.map((die, index) => <DieComponent key={index} index={index} die={die} />);
@@ -61,11 +45,7 @@ export default () => {
                 {dieComponents}
             </div>
 
-            <div style={{ display: "flex", flexDirection: "row", justifyContent: "center" }}>
-                <div className="roll-dice-button">
-                    {rollDiceText()}
-                </div>
-            </div>
+            <GameRollButton />
         </div>
     );
 }
