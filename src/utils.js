@@ -9,6 +9,9 @@ const pluralized = (number, string) => `${number} ${Math.abs(number) === 1 ? str
 // Returns if a number is even
 const isEven = num => num % 2 === 0;
 
+// Randint between a and b
+const randint = (a, b) => Math.floor(Math.random() * (b - a + 1)) + a;
+
 // Calculates the current score based on a set of dice
 const calculateScore = dice => {
     // Sorts the dice first
@@ -78,5 +81,6 @@ export {
     calculateScore,
     capitalize,
     isEven,
-    pluralized
+    pluralized,
+    randint
 }

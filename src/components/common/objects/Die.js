@@ -1,7 +1,9 @@
+import { randint } from "../../../utils";
+
 // This object represents a die in the game
 export default sides => ({
     // Value of the die
-    value: 1,
+    value: randint(1, sides),
 
     // Number of sides on the die
     sides,

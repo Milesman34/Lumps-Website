@@ -12,7 +12,7 @@ const initialState = {
     scores: [0, 0],
 
     // How many rolls does the player have left for their turn
-    rollsLeft: 3,
+    rollsLeft: 2,
 
     // The current dice the player has
     dice: [4, 4, 6, 6, 8, 8, 10, 10].map(sides => Die(sides)),
