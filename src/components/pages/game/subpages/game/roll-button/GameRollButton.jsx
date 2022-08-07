@@ -1,6 +1,6 @@
 import "./GameRollButton.css"
 
-import { selectCanRollDice, selectIsTurnOver, selectNumMoreDiceToKeep } from "../../../../../../redux/selectors/game";
+import { selectCanRollDice, selectNumMoreDiceToKeep } from "../../../../../../redux/selectors/game";
 import { useDispatch, useSelector } from "react-redux";
 import { rollDice } from "../../../../../../redux/actions/game";
 
@@ -15,14 +15,9 @@ export default () => {
     // How many more dice must the player keep
     const howManyMore = useSelector(selectNumMoreDiceToKeep);
 
-    // Is the player's turn over
-    const isTurnOver = useSelector(selectIsTurnOver);
-
     // Text for the roll dice button
     const rollDiceText = () => {
-        if (isTurnOver) {
-            return "End Turn";
-        } if (canRoll) {
+        if (canRoll) {
             return "Roll Dice";
         } else if (howManyMore === 1) {
             return "You must keep 1 more die"
@@ -35,16 +30,14 @@ export default () => {
     const handleClick = event => {
         event.preventDefault();
 
-        if (isTurnOver) {
-            
-        } else if (canRoll) {
+        if (canRoll) {
             dispatch(rollDice());
         }
     }
 
     return (
         <div style={{ display: "flex", flexDirection: "row", justifyContent: "center" }}>
-            <div onClick={handleClick} className={`roll-dice-button ${canRoll || isTurnOver ? "roll-dice-can-roll" : "roll-dice-cannot-roll"}`}>
+            <div onClick={handleClick} className={`roll-dice-button ${canRoll ? "roll-dice-can-roll" : "roll-dice-cannot-roll"}`}>
                 {rollDiceText()}
             </div>
         </div>

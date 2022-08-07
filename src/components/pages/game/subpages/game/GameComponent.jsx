@@ -5,6 +5,7 @@ import "./GameComponent.css"
 import DieComponent from "./die/DieComponent"
 import GameScoreHeader from "./score-header/GameScoreHeader"
 import GameRollButton from "./roll-button/GameRollButton"
+import EndTurnButton from "./end-turn-button/EndTurnButton"
 
 export default () => {
     // Current score
@@ -56,7 +57,9 @@ export default () => {
                 {dieComponents}
             </div>
 
-            <GameRollButton />
+            {isTurnOver ? <span /> : <GameRollButton />}
+
+            <EndTurnButton />
         </div>
     );
 }
