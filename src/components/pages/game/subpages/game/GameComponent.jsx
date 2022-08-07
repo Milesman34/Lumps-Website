@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux"
-import { selectCurrentIndex, selectCurrentScore, selectDice, selectRollsLeft } from "../../../../../redux/selectors/game"
+import { selectCurrentIndex, selectCurrentScore, selectDice, selectNumDiceMustKeep, selectRollsLeft } from "../../../../../redux/selectors/game"
 import "./GameComponent.css"
 
 import DieComponent from "./die/DieComponent"
@@ -15,11 +15,17 @@ export default () => {
     // Number of rolls left in this turn
     const rollsLeft = useSelector(selectRollsLeft);
 
-    // Returns the text used to display the number of rolls left
-    const rollsLeftText = rolls => rolls === 2 ? "2 Rolls Left" : rolls === 1 ? "1 Roll Left" : "No Rolls Left";
+    // Number of dice you must keep
+    const numDiceMustKeep = useSelector(selectNumDiceMustKeep);
 
     // Current list of dice
     const dice = useSelector(selectDice);
+
+    // Returns the text used to display the number of rolls left
+    const rollsLeftText = () => rollsLeft === 2 ? "2 Rolls Left" : rollsLeft === 1 ? "1 Roll Left" : "No Rolls Left";
+
+    // Returns the text used to display the number of dice you must keep
+    const diceKeepText = () => numDiceMustKeep === 1 ? "You must keep 1 die" : rollsLeft > 0 ? `You must keep ${numDiceMustKeep} dice` : ""; 
 
     // List of die components to render
     const dieComponents = dice.map((die, index) => <DieComponent key={index} index={index} die={die} />);
@@ -37,7 +43,11 @@ export default () => {
             </div>
 
             <div className="game-display-text game-rolls-left-display">
-                {rollsLeftText(rollsLeft)}
+                {rollsLeftText()}
+            </div>
+
+            <div className="game-display-text game-dice-keep-display">
+                {diceKeepText()}
             </div>
 
             <div className="game-dice-container">
