@@ -48,4 +48,10 @@ export const resetGame = dispatch => {
     dispatch(resetScores());
     dispatch(setCurrentIndex(0));
     dispatch(setIsBeingPlayed(true));
-};
+}
+
+// Ends the current turn
+export const endTurn = (dispatch) => {
+    // dispatch(addScore())
+    dispatch(incrementCurrentIndex());
+}
