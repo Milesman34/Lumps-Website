@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { selectCurrentIndex, selectCurrentScore, selectDice, selectGameState, selectIsTurnOver, selectRollsLeft, selectWinningPlayer } from "../../../../../redux/selectors/game"
 import "./GameComponent.css"
 
@@ -6,8 +6,12 @@ import DieComponent from "./die/DieComponent"
 import GameScoreHeader from "./score-header/GameScoreHeader"
 import GameRollButton from "./roll-button/GameRollButton"
 import EndTurnButton from "./end-turn-button/EndTurnButton"
+import { resetGame } from "../../../../../redux/actions/game"
 
 export default () => {
+    // Dispatch to use
+    const dispatch = useDispatch();
+
     // Current score
     const currentScore = useSelector(selectCurrentScore);
 
@@ -38,6 +42,11 @@ export default () => {
         } else {
             return "1 Roll Left";
         }
+    }
+
+    // Restarts the game
+    const restartGame = () => {
+        resetGame(dispatch);
     }
 
     // List of die components to render
@@ -71,7 +80,13 @@ export default () => {
         <div className="winner-display">
             Player {winningPlayer + 1} wins!
         </div>
-    </div>
+
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+            <button onClick={restartGame} className="end-restart-button">
+                Restart Game
+            </button>
+        </div>
+    </div >
 
     return (
         <div className="game-component">

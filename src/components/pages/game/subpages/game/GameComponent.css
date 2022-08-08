@@ -38,3 +38,30 @@
     align-items: center;
     justify-content: center;
 }
+
+.winner-display {
+    margin-top: 5%;
+    font-size: 3rem;
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+.end-restart-button {
+    font-size: 2rem;
+    padding: 10px 0px;
+    width: 260px;
+
+    background-color: rgb(134, 166, 180);
+    border: 2px solid black;
+    border-radius: 5px;
+    user-select: none;
+    cursor: pointer;
+
+    margin-top: 2.5%;
+}
+
+.end-restart-button:hover {
+    background-color: rgb(148, 177, 188);
+}
