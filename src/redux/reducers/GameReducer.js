@@ -101,7 +101,7 @@ export default (state = initialState, action) => {
             const rollsLeft = state.rollsLeft - 1;
 
             // Will the turn be over?
-            const turnOver = willTurnBeOver(state.dice);
+            const isTurnOver = willTurnBeOver(state.dice);
         
             return {
                 ...state,
@@ -118,10 +118,10 @@ export default (state = initialState, action) => {
                     } else { // Reroll die
                         let newValue = randint(1, die.sides);
 
-                        // The die will be locked if the turn is over
+                        // The die will be locked if the turn will be over
                         return {
                             ...die,
-                            isLocked: turnOver,
+                            isLocked: isTurnOver,
                             willBeLocked: false,
                             value: newValue
                         }
