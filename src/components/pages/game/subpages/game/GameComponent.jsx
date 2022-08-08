@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux"
-import { selectCurrentIndex, selectCurrentScore, selectDice, selectGameState, selectIsTurnOver, selectRollsLeft } from "../../../../../redux/selectors/game"
+import { selectCurrentIndex, selectCurrentScore, selectDice, selectGameState, selectIsTurnOver, selectRollsLeft, selectWinningPlayer } from "../../../../../redux/selectors/game"
 import "./GameComponent.css"
 
 import DieComponent from "./die/DieComponent"
@@ -22,6 +22,9 @@ export default () => {
 
     // Current game state
     const gameState = useSelector(selectGameState);
+
+    // Current winning player
+    const winningPlayer = useSelector(selectWinningPlayer);
 
     // Current list of dice
     const dice = useSelector(selectDice);
@@ -65,7 +68,9 @@ export default () => {
 
     // The component to render on game end
     const gameEndComponent = <div>
-        Game Over
+        <div className="winner-display">
+            Player {winningPlayer + 1} wins!
+        </div>
     </div>
 
     return (

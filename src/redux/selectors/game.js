@@ -1,4 +1,4 @@
-import { calculateScore, canRollDice, isTurnOver, numMoreDiceToKeep } from "../../utils";
+import { calculateScore, canRollDice, getWinningPlayer, isTurnOver, numMoreDiceToKeep } from "../../utils";
 
 // Selects the scores of the game
 const selectScores = state => state.game.scores;
@@ -30,6 +30,9 @@ const selectCanRollDice = state => canRollDice(state.game.dice, state.game.rolls
 // Is the player's turn over?
 const selectIsTurnOver = state => isTurnOver(state.game.dice, state.game.rollsLeft);
 
+// Selects the winning player
+const selectWinningPlayer = state => getWinningPlayer(state.game.scores);
+
 export {
     selectBeingPlayed,
     selectCanRollDice,
@@ -40,5 +43,6 @@ export {
     selectIsTurnOver,
     selectNumMoreDiceToKeep,
     selectRollsLeft,
-    selectScores
+    selectScores,
+    selectWinningPlayer
 }

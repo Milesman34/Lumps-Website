@@ -67,7 +67,7 @@ export default (state = initialState, action) => {
             const currentScore = newScores[state.currentIndex];
 
             // Checks if the player won
-            const didWin = currentScore >= 100;
+            const didWin = currentScore >= 30;
 
             return {
                 ...state,

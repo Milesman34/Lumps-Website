@@ -118,10 +118,16 @@ const isTurnOver = (dice, rolls) => numUnlockedDice(dice) <= 2 || rolls === 0;
 // Will the current player's turn be over after this roll?
 const willTurnBeOver = dice => dice.filter(die => !(die.isLocked || die.willBeLocked)).length <= 2;
 
+// Returns the index of the player who won
+const getWinningPlayer = scores => scores
+    .map((element, index) => [element, index])
+    .reduce((a, b) => b[0] > a[0] ? b : a, [-1, -1])[1];
+
 export {
     calculateScore,
     canRollDice,
     capitalize,
+    getWinningPlayer,
     isEven,
     isTurnOver,
     numMoreDiceToKeep,
