@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux"
-import { toggleDieWillBeLocked } from "../../../../../../redux/actions/game";
+import { toggleDieWillBeLocked } from "../../../../../../redux/actions/game"
 import "./DieComponent.css"
+import "../../../../../../common.css"
 
 // Component for a Die object
 export default ({ die, index }) => {
@@ -21,7 +22,7 @@ export default ({ die, index }) => {
     }
 
     return (
-        <div onClick={handleClick} className={`die ${colorClass}`}>
+        <div onClick={handleClick} className={`die flex-center-column ${colorClass}`}>
             <div className="die-value">{die.value}</div>
             <div className="die-sides">Sides: {die.sides}</div>
         </div>

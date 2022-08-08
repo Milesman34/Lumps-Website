@@ -37,7 +37,7 @@ export default () => {
 
     return (
         <div style={{ display: "flex", flexDirection: "row", justifyContent: "center" }}>
-            <div onClick={handleClick} className={`roll-dice-button ${canRoll ? "roll-dice-can-roll" : "roll-dice-cannot-roll"}`}>
+            <div onClick={handleClick} className={`roll-dice-button flex-center-column ${canRoll ? "roll-dice-can-roll app-button" : "roll-dice-cannot-roll app-button-inactive"}`}>
                 {rollDiceText()}
             </div>
         </div>

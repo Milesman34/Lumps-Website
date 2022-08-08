@@ -1,4 +1,5 @@
 import "./Header.css"
+import "../../../common.css"
 
 import { A } from "hookrouter"
 
@@ -6,7 +7,7 @@ import { A } from "hookrouter"
 export default ({ routeObjects, classPrefix}) => {
     // Array of link objects to use
     const links = routeObjects.map(routeObject => 
-        <A className={`header-item ${classPrefix}-header-item`} key={routeObject.name} href={routeObject.route}>{routeObject.name}</A>
+        <A className={`header-item flex-center-column ${classPrefix}-header-item`} key={routeObject.name} href={routeObject.route}>{routeObject.name}</A>
     );
 
     return (

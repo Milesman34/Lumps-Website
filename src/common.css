@@ -1,0 +1,57 @@
+/* Common CSS classes to share between elements */
+/* Center flexbox */
+.flex-center {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
+/* Center flexbox w/ column */
+.flex-center-column {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+}
+
+/* Center flexbox w/ row */
+.flex-center-row {
+    display: flex;
+
+    flex-direction: row;
+
+    align-items: center;
+    justify-content: center;
+}
+
+/* Center flexbox with text alignment */
+.flex-center-text {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Common styles for buttons */
+.app-button {
+    background-color: rgb(134, 166, 180);
+    border: 2px solid black;
+    border-radius: 5px;
+    user-select: none;
+    cursor: pointer;
+}
+
+.app-button:hover {
+    background-color: rgb(148, 177, 188);
+}
+
+.app-button-inactive {
+    background-color: rgb(134, 166, 180);
+    border: 2px solid black;
+    border-radius: 5px;
+    user-select: none;
+}

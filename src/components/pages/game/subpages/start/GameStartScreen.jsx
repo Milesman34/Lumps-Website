@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { resetGame, setNumPlayers } from "../../../../../redux/actions/game";
 import "./GameStartScreen.css"
+import "../../../../../common.css"
 
 // Component for the game's start screen
 export default () => {
@@ -34,12 +35,12 @@ export default () => {
     }
 
     return (
-        <div className="game-start-screen">
+        <div className="game-start-screen flex-center-column">
             <input type="text" placeholder="Number of Players (1-8)" onChange={handleChange} name="players" value={playersText} className="game-start-input" />
 
-            {warningText === "" ? <span className="game-start-warning"></span> : <div className="game-start-warning">{warningText}</div>}
+            {warningText === "" ? <span className="game-start-warning flex-center-column"></span> : <div className="game-start-warning flex-center-column">{warningText}</div>}
 
-            <button onClick={startGame} className="game-start-button">Start Game</button>
+            <button onClick={startGame} className="game-start-button app-button">Start Game</button>
         </div>
     );
 }

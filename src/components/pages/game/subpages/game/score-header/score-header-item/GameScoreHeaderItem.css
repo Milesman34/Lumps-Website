@@ -1,11 +1,6 @@
 .game-score-header-item {
     font-size: 1rem;
     padding: 5px;
-
-    display: flex;
-
-    flex-direction: column;
-    align-items: center;
 }
 
 .game-score-header-id-text {

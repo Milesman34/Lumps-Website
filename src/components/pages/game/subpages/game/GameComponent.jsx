@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux"
 import { selectCurrentIndex, selectCurrentScore, selectDice, selectGameState, selectIsTurnOver, selectRollsLeft, selectWinningPlayer } from "../../../../../redux/selectors/game"
 import "./GameComponent.css"
+import "../../../../../common.css"
 
 import DieComponent from "./die/DieComponent"
 import GameScoreHeader from "./score-header/GameScoreHeader"
@@ -66,7 +67,7 @@ export default () => {
             {rollsLeftText()}
         </div>
 
-        <div className="game-dice-container">
+        <div className="game-dice-container flex-center-row">
             {dieComponents}
         </div>
 
@@ -77,12 +78,12 @@ export default () => {
 
     // The component to render on game end
     const gameEndComponent = <div>
-        <div className="winner-display">
+        <div className="winner-display flex-center">
             Player {winningPlayer + 1} wins!
         </div>
 
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-            <button onClick={restartGame} className="end-restart-button">
+        <div className="flex-center">
+            <button onClick={restartGame} className="end-restart-button app-button">
                 Restart Game
             </button>
         </div>

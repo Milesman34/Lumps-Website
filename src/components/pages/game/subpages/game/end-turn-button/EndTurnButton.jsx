@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { endTurn } from "../../../../../../redux/actions/game";
 import { selectCurrentScore } from "../../../../../../redux/selectors/game";
 import "./EndTurnButton.css"
+import "../../../../../../common.css"
 
 export default () => {
     // Current dispatch
@@ -18,8 +19,8 @@ export default () => {
     }
 
     return (
-        <div style={{ display: "flex", flexDirection: "row", justifyContent: "center" }}>
-            <div onClick={handleClick} className="end-turn-button">
+        <div className="flex-center-row">
+            <div onClick={handleClick} className="end-turn-button app-button flex-center-column">
                 End Turn
             </div>
         </div>  
