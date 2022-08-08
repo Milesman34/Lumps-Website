@@ -77,10 +77,17 @@ const calculateScore = dice => {
     return score;
 }
 
+// Rolls a die to generate a random value based on its sides
+const rollDie = die => ({
+    ...die,
+    value: randint(1, die.sides)
+});
+
 export {
     calculateScore,
     capitalize,
     isEven,
     pluralized,
-    randint
+    randint,
+    rollDie
 }

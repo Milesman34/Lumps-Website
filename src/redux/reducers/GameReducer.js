@@ -1,4 +1,5 @@
 import Die from "../../components/common/objects/Die"
+import { rollDie } from "../../utils"
 
 // Initial state
 const initialState = {
@@ -93,10 +94,7 @@ export default (state = initialState, action) => {
                             willBeLocked: false
                         }
                     } else { // Reroll die
-                        return {
-                            ...die,
-                            value: die.roll()
-                        }
+                        return rollDie(die);
                     }
                 })
             }

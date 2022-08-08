@@ -12,10 +12,5 @@ export default sides => ({
     isLocked: false,
 
     // Will the current die be locked when the next roll happens?
-    willBeLocked: false,
-
-    // Generates a random value based on the number of sides
-    roll() {
-        return randint(1, this.sides);
-    }
+    willBeLocked: false
 });
