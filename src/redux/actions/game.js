@@ -26,9 +26,9 @@ export const addScore = score => ({
     payload: score
 });
 
-// Sets if the game is being played
-export const setIsBeingPlayed = value => ({
-    type: "SET_IS_BEING_PLAYED",
+// Sets the game state
+export const setGameState = value => ({
+    type: "SET_GAME_STATE",
     payload: value
 });
 
@@ -58,7 +58,7 @@ export const resetDice = () => ({
 export const resetGame = dispatch => {
     dispatch(resetScores());
     dispatch(setCurrentIndex(0));
-    dispatch(setIsBeingPlayed(true));
+    dispatch(setGameState("game"));
 }
 
 // Ends the current turn

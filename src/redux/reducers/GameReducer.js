@@ -21,8 +21,8 @@ const initialState = {
     // The current dice the player has
     dice: diceSides.map(sides => Die(sides)),
 
-    // Is the game currently being played?
-    isBeingPlayed: false
+    // What state is the game in? (start, game, end)
+    gameState: "start"
 }
 
 // Reducer for key state elements of the game
@@ -69,20 +69,17 @@ export default (state = initialState, action) => {
             // Checks if the player won
             const didWin = currentScore >= 100;
 
-            if (didWin) {
-                alert(`Player ${state.currentIndex + 1} wins!`)
-            }
-
             return {
                 ...state,
-                scores: newScores
+                scores: newScores,
+                gameState: didWin ? "end" : "game"
             }
 
         // Sets if the game is being played
-        case "SET_IS_BEING_PLAYED":
+        case "SET_GAME_STATE":
             return {
                 ...state,
-                isBeingPlayed: action.payload
+                gameState: action.payload
             }
 
         // Toggles if a die will be locked

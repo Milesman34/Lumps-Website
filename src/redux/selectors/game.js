@@ -6,8 +6,11 @@ const selectScores = state => state.game.scores;
 // Selects the current score the player has
 const selectCurrentScore = state => calculateScore(state.game.dice);
 
-// Returns if the game is being played
-const selectBeingPlayed = state => state.game.isBeingPlayed;
+// Selects the current game state
+const selectGameState = state => state.game.gameState;
+
+// Selects if the game is being played
+const selectBeingPlayed = state => state.game.gameState === "game";
 
 // Selects the index of the current player
 const selectCurrentIndex = state => state.game.currentIndex;
@@ -33,6 +36,7 @@ export {
     selectCurrentIndex,
     selectCurrentScore,
     selectDice,
+    selectGameState,
     selectIsTurnOver,
     selectNumMoreDiceToKeep,
     selectRollsLeft,
