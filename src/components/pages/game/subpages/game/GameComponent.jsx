@@ -7,7 +7,7 @@ import DieComponent from "./die/DieComponent"
 import GameScoreHeader from "./score-header/GameScoreHeader"
 import GameRollButton from "./roll-button/GameRollButton"
 import EndTurnButton from "./end-turn-button/EndTurnButton"
-import { resetGame } from "../../../../../redux/actions/game"
+import { resetGame, setGameState } from "../../../../../redux/actions/game"
 
 export default () => {
     // Dispatch to use
@@ -50,6 +50,11 @@ export default () => {
         resetGame(dispatch);
     }
 
+    // Moves the game to the starting screen
+    const goToStart = () => {
+        dispatch(setGameState("start"));
+    }
+
     // List of die components to render
     const dieComponents = dice.map((die, index) => <DieComponent key={index} index={index} die={die} />);
 
@@ -82,9 +87,13 @@ export default () => {
             Player {winningPlayer + 1} wins!
         </div>
 
-        <div className="flex-center">
+        <div className="flex-center-column">
             <button onClick={restartGame} className="end-restart-button app-button">
                 Restart Game
+            </button>
+
+            <button onClick={goToStart} className="end-start-screen-button app-button">
+                Go to Start Screen
             </button>
         </div>
     </div >
