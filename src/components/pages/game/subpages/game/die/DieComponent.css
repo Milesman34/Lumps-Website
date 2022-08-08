@@ -2,7 +2,6 @@
     border: 2px solid black;
     width: 100px;
     height: 100px;
-    font-size: 2rem;
     user-select: none;
 
     display: flex;
@@ -12,6 +11,18 @@
     justify-content: center;
 
     margin: 25px;
+}
+
+.die-value {
+    align-items: center;
+    font-size: 1.8rem;
+}
+
+.die-sides {
+    align-items: center;
+    font-size: 1rem;
+    margin-top: 15px;
+    color: blue;
 }
 
 .die-unlocked:hover {

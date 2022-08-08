@@ -22,7 +22,8 @@ export default ({ die, index }) => {
 
     return (
         <div onClick={handleClick} className={`die ${colorClass}`}>
-            {die.value}
+            <div className="die-value">{die.value}</div>
+            <div className="die-sides">Sides: {die.sides}</div>
         </div>
     );
 }
