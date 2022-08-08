@@ -60,9 +60,22 @@ export default (state = initialState, action) => {
 
         // Adds to the current score
         case "ADD_SCORE":
+            // Array of new scores
+            const newScores = state.scores.map((score, index) => index === state.currentIndex ? score + action.payload : score);
+
+            // Gets the score of the current player
+            const currentScore = newScores[state.currentIndex];
+
+            // Checks if the player won
+            const didWin = currentScore >= 100;
+
+            if (didWin) {
+                alert(`Player ${state.currentIndex + 1} wins!`)
+            }
+
             return {
                 ...state,
-                scores: state.scores.map((score, index) => index === state.currentIndex ? score + action.payload : score)
+                scores: newScores
             }
 
         // Sets if the game is being played
