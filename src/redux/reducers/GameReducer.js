@@ -1,6 +1,9 @@
 import Die from "../../components/common/objects/Die"
 import { rollDie } from "../../utils"
 
+// Array of the number of sides of dice
+const diceSides = [4, 4, 6, 6, 8, 8, 10, 10];
+
 // Initial state
 const initialState = {
     // Number of players
@@ -16,7 +19,7 @@ const initialState = {
     rollsLeft: 2,
 
     // The current dice the player has
-    dice: [4, 4, 6, 6, 8, 8, 10, 10].map(sides => Die(sides)),
+    dice: diceSides.map(sides => Die(sides)),
 
     // Is the game currently being played?
     isBeingPlayed: false
@@ -97,6 +100,20 @@ export default (state = initialState, action) => {
                         return rollDie(die);
                     }
                 })
+            }
+
+        // Sets the number of remaining rolls left
+        case "SET_ROLLS_LEFT":
+            return {
+                ...state,
+                rollsLeft: action.payload
+            }
+
+        // Resets the current dice
+        case "RESET_DICE":
+            return {
+                ...state,
+                dice: diceSides.map(sides => Die(sides))
             }
 
         default:

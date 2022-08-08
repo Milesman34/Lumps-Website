@@ -43,6 +43,17 @@ export const rollDice = () => ({
     type: "ROLL_DICE"
 });
 
+// Sets the number of remaining rolls
+export const setRollsLeft = rolls => ({
+    type: "SET_ROLLS_LEFT",
+    payload: rolls
+});
+
+// Resets the dice
+export const resetDice = () => ({
+    type: "RESET_DICE"
+});
+
 // Resets the game (this is not an action, but can be called by passing dispatch)
 export const resetGame = dispatch => {
     dispatch(resetScores());
@@ -51,7 +62,9 @@ export const resetGame = dispatch => {
 }
 
 // Ends the current turn
-export const endTurn = (dispatch) => {
-    // dispatch(addScore())
+export const endTurn = (dispatch, score) => {
+    dispatch(addScore(score));
+    dispatch(setRollsLeft(2));
+    dispatch(resetDice());
     dispatch(incrementCurrentIndex());
 }
