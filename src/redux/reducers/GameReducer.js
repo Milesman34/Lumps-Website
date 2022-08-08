@@ -1,5 +1,5 @@
 import Die from "../../components/common/objects/Die"
-import { isTurnOver, rollDie, willTurnBeOver } from "../../utils"
+import { randint, willTurnBeOver } from "../../utils"
 
 // Array of the number of sides of dice
 const diceSides = [4, 4, 6, 6, 8, 8, 10, 10];
@@ -109,14 +109,22 @@ export default (state = initialState, action) => {
                 dice: state.dice.map(die => {
                     if (die.isLocked) { // Nothing changes
                         return die;
-                    } else if (die.willBeLocked || turnOver) { // Die becomes locked if it was marked as such or if the turn is over
+                    } else if (die.willBeLocked) { // Die becomes locked if it was marked as such or if the turn is over
                         return {
                             ...die,
                             isLocked: true,
                             willBeLocked: false
                         }
                     } else { // Reroll die
-                        return rollDie(die);
+                        let newValue = randint(1, die.sides);
+
+                        // The die will be locked if the turn is over
+                        return {
+                            ...die,
+                            isLocked: turnOver,
+                            willBeLocked: false,
+                            value: newValue
+                        }
                     }
                 })
             }
