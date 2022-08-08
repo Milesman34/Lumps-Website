@@ -83,11 +83,53 @@ const rollDie = die => ({
     value: randint(1, die.sides)
 });
 
+// Returns the number of unlocked dice
+const numUnlockedDice = dice => dice.filter(die => !die.isLocked).length;
+
+// Returns how many dice the player must keep
+const numDiceMustKeep = (dice, rolls) => {
+    // Number of unlocked dice
+    const numUnlocked = numUnlockedDice(dice);
+
+    switch (rolls) {
+        case 0:
+            return numUnlocked;
+
+        case 1:
+            return numUnlocked >= 2 ? 2 : numUnlocked;
+
+        case 2:
+            return 4;
+    }
+}
+
+// Returns the number of dice that will be locked
+const numDiceWillBeLocked = dice => dice.filter(die => die.willBeLocked).length;
+
+// Returns how many more dice the player must keep
+const numMoreDiceToKeep = (dice, rolls) => numDiceMustKeep(dice, rolls) - numDiceWillBeLocked(dice);
+
+// Can the player roll the dice?
+const canRollDice = (dice, rolls) => numDiceWillBeLocked(dice) >= numDiceMustKeep(dice, rolls);
+
+// Is the current player's turn over?
+const isTurnOver = (dice, rolls) => numUnlockedDice(dice) <= 2 || rolls === 0;
+
+// Will the current player's turn be over after this roll?
+const willTurnBeOver = dice => dice.filter(die => !(die.isLocked || die.willBeLocked)).length <= 2;
+
 export {
     calculateScore,
+    canRollDice,
     capitalize,
     isEven,
+    isTurnOver,
+    numMoreDiceToKeep,
+    numDiceMustKeep,
+    numDiceWillBeLocked,
+    numUnlockedDice,
     pluralized,
     randint,
-    rollDie
+    rollDie,
+    willTurnBeOver
 }
