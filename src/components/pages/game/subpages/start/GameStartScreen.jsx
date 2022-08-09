@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { resetGame, setNumPlayers } from "../../../../../redux/actions/game";
+import { useState } from "react"
+import { useDispatch } from "react-redux"
+import { resetGame, setNumPlayers } from "../../../../../redux/actions/game"
 import "./GameStartScreen.css"
 import "../../../../../common.css"
 
@@ -34,9 +34,16 @@ export default () => {
         setPlayersText(event.target.value);
     }
 
+    // Handles key presses
+    const handleKeyPress = event => {
+        if (event.key === "Enter") {
+            startGame();
+        }
+    }
+
     return (
         <div className="game-start-screen flex-center-column">
-            <input type="text" placeholder="Number of Players (1-8)" onChange={handleChange} name="players" value={playersText} className="game-start-input" />
+            <input type="text" placeholder="Number of Players (1-8)" onChange={handleChange} onKeyPress={handleKeyPress} name="players" value={playersText} className="game-start-input" />
 
             {warningText === "" ? <span className="game-start-warning flex-center-column"></span> : <div className="game-start-warning flex-center-column">{warningText}</div>}
 
