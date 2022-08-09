@@ -6,3 +6,25 @@
     font-size: 3rem;
     height: 25%;
 }
+
+.scoreboard-table {
+    width: 100%;
+    margin-top: 2.5%;
+}
+
+.scoreboard-player-header {
+    font-size: 2rem;
+    font-weight: lighter;
+    padding-bottom: 0.5%;
+    border-bottom: 2px solid black;
+}
+
+.scoreboard-table > th {
+    border: 2px solid black;
+}
+
+.scoreboard-score-row {
+    font-size: 1.5rem;
+    font-weight: lighter;
+    margin-top: 0.5%;
+}

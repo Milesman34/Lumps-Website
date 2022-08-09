@@ -18,7 +18,7 @@ export default () => {
         .fill(0)
         .map((_, index) => index + 1)
         .map(number =>
-            <th key={number}>
+            <th className="scoreboard-player-header" key={number}>
                 Player {number}
             </th>
         );
@@ -28,7 +28,7 @@ export default () => {
         .map((scoreboardRow, index) => {
             // Check if this is the only row or it is not the last row
             if (scoreboard.length === 1 || index < scoreboard.length - 1 || scoreboardRow[0] !== null) {
-                return <tr key={index}>
+                return <tr className="scoreboard-score-row" key={index}>
                     {
                         scoreboardRow
                             .map((column, index2) =>
@@ -49,7 +49,7 @@ export default () => {
                 </div> :
 
                 <div className="game-scoreboard">
-                    <table>
+                    <table className="scoreboard-table">
                         <tr>
                             {playerHeaders}
                         </tr>
