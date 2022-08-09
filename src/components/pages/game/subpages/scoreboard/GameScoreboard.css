@@ -1,0 +1,8 @@
+.game-scoreboard-container {
+    height: 100%;
+}
+
+.game-scoreboard-placeholder {
+    font-size: 3rem;
+    height: 25%;
+}
