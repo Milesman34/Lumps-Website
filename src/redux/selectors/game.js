@@ -33,6 +33,12 @@ const selectIsTurnOver = state => isTurnOver(state.game.dice, state.game.rollsLe
 // Selects the winning player
 const selectWinningPlayer = state => getWinningPlayer(state.game.scores);
 
+// Selects the number of players
+const selectNumPlayers = state => state.game.numPlayers;
+
+// Selects the scoreboard
+const selectScoreboard = state => state.game.scoreboard;
+
 export {
     selectBeingPlayed,
     selectCanRollDice,
@@ -42,7 +48,9 @@ export {
     selectGameState,
     selectIsTurnOver,
     selectNumMoreDiceToKeep,
+    selectNumPlayers,
     selectRollsLeft,
+    selectScoreboard,
     selectScores,
     selectWinningPlayer
 }

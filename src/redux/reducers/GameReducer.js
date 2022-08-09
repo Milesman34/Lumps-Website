@@ -59,7 +59,8 @@ export default (state = initialState, action) => {
         case "RESET_SCORES":
             return {
                 ...state,
-                scores: Array(state.numPlayers).fill(0)
+                scores: Array(state.numPlayers).fill(0),
+                scoreboard: [Array(state.numPlayers).fill(null)]
             }
 
         // Adds to the current score
