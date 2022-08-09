@@ -8,15 +8,15 @@ export default () => {
 
     return (
         <div className="game-scoreboard-container">
-            {gameState === "start" ? 
-            <div className="game-scoreboard-placeholder flex-center-column">
-                No game being played!
-            </div> :
-            
-            <div className="game-scoreboard">
-                Scoreboard
-            </div>
+            {gameState === "start" ?
+                <div className="game-scoreboard-placeholder flex-center-column">
+                    No game being played!
+                </div> :
+
+                <div className="game-scoreboard">
+                    Scoreboard
+                </div>
             }
-        </div>  
+        </div>
     );
 }

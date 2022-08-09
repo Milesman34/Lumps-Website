@@ -22,7 +22,10 @@ const initialState = {
     dice: diceSides.map(sides => Die(sides)),
 
     // What state is the game in? (start, game, end)
-    gameState: "start"
+    gameState: "start",
+
+    // The current scoreboard
+    scoreboard: [[null, null]]
 }
 
 // Reducer for key state elements of the game
@@ -34,7 +37,8 @@ export default (state = initialState, action) => {
                 ...state,
                 numPlayers: action.payload,
                 // Scores are also reset when changing the number of players
-                scores: Array(action.payload).fill(0)
+                scores: Array(action.payload).fill(0),
+                scoreboard: [Array(action.payload).fill(null)]
             }
 
         // Sets the current player index
@@ -61,7 +65,9 @@ export default (state = initialState, action) => {
         // Adds to the current score
         case "ADD_SCORE":
             // Array of new scores
-            const newScores = state.scores.map((score, index) => index === state.currentIndex ? score + action.payload : score);
+            const newScores = state.scores.map((score, index) =>
+                index === state.currentIndex ? score + action.payload : score
+            );
 
             // Gets the score of the current player
             const currentScore = newScores[state.currentIndex];
@@ -69,10 +75,31 @@ export default (state = initialState, action) => {
             // Checks if the player won
             const didWin = currentScore >= 100;
 
+            // Number of turns the players have taken
+            const numTurns = state.scoreboard.length;
+
+            // Creates the new scoreboard
+            // We keep all but the last value as the same, then update the rest
+            const newScoreboard = state.scoreboard
+                .slice(0, numTurns - 1)
+                .concat([
+                    state.scoreboard[numTurns - 1]
+                        // Replaces the score with the correct index with its new score
+                        .map((score, index) =>
+                            index === state.currentIndex ? currentScore : score
+                        )
+                ]);
+
             return {
                 ...state,
                 scores: newScores,
-                gameState: didWin ? "end" : "game"
+                gameState: didWin ? "end" : "game",
+                // We need to check if the current player is the last one, and if it does then we add another blank row
+                scoreboard: state.currentIndex === state.numPlayers - 1 ?
+                    newScoreboard
+                        .concat([Array(state.numPlayers).fill(null)]) :
+
+                    newScoreboard
             }
 
         // Sets if the game is being played
@@ -99,7 +126,7 @@ export default (state = initialState, action) => {
 
             // Will the turn be over?
             const isTurnOver = willTurnBeOver(state.dice);
-        
+
             return {
                 ...state,
                 rollsLeft,
