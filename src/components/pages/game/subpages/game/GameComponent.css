@@ -52,3 +52,12 @@
 
     margin-top: 1.5%;
 }
+
+.exit-game-button {
+    font-size: 1.5rem;
+    padding: 15px 0px;
+    width: 300px;
+
+    position: absolute;
+    bottom: 5%;
+}

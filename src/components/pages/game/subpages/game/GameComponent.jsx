@@ -79,6 +79,12 @@ export default () => {
         {isTurnOver || <GameRollButton />}
 
         <EndTurnButton />
+
+        <div className="flex-center-row">
+            <button onClick={() => confirm("Do you want to exit the game?") && goToStart()} className="exit-game-button app-button">
+                Exit Game
+            </button>
+        </div>
     </div>
 
     // The component to render on game end
