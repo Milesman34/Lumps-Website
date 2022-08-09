@@ -23,6 +23,26 @@ export default () => {
             </div>
         );
 
+    // Gets the current maximum and minimum score
+    // We only need to check the last 2 rows of the scoreboard
+    const lastTwo = scoreboard.length === 1 ?
+        scoreboard[0] :
+        scoreboard[scoreboard.length - 2]
+            .concat(scoreboard[scoreboard.length - 1]);
+
+    // For minimums we check the last non-null value of each column
+    const lastNonNull = scoreboard.length === 1 ?
+        scoreboard[0] :
+        scoreboard[scoreboard.length - 1]
+            .map((score, index) =>
+                score === null ?
+                    scoreboard[scoreboard.length - 2][index] : score
+            )
+
+    const maximum = Math.max.apply(null, lastTwo);
+
+    const minimum = Math.min.apply(null, lastNonNull);
+
     // Gets the remaining rows for the table
     const remainingRows = scoreboard
         .map((scoreboardRow, index) => {
@@ -31,12 +51,23 @@ export default () => {
                 return <div key={index} className="scoreboard-score-row" style={{ gridTemplateColumns: `repeat(${numPlayers}, auto)` }}>
                     {
                         scoreboardRow
-                            .map((column, index2) =>
-                                <div className="flex-center-column" style={{ borderRight: "2px solid black" }}>
-                                    <div key={index2} className="scoreboard-score-item flex-center-column">
+                            .map((column, index2) => {
+                                // Figures out what class should be used for minimum/maximum
+                                let textClass = ""
+
+                                // We need to check if the index of this one is in the last two
+                                if (index === scoreboard.length - 1 || (index === scoreboard.length - 2 && scoreboard[scoreboard.length - 1][index2] === null)) {
+                                    textClass = column === maximum ?
+                                        "maximum-item" : column === minimum ?
+                                            "minimum-item" : "";
+                                }
+
+                                return <div key={index2} className="flex-center-column" style={{ borderRight: "2px solid black" }}>
+                                    <div className={"scoreboard-score-item flex-center-column " + textClass}>
                                         {column === null ? "--" : column}
                                     </div>
                                 </div>
+                            }
                             )
                     }
                 </div>

@@ -55,3 +55,12 @@
     border-radius: 5px;
     user-select: none;
 }
+
+/* Text classes for minimum/maximum */
+.minimum-item {
+    color: rgb(188, 0, 0);
+}
+
+.maximum-item {
+    color: rgb(9, 168, 9);
+}
