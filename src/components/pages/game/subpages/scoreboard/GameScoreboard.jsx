@@ -18,9 +18,9 @@ export default () => {
         .fill(0)
         .map((_, index) => index + 1)
         .map(number =>
-            <th className="scoreboard-player-header" key={number}>
+            <div className="scoreboard-player-header-item flex-center-column" key={number}>
                 Player {number}
-            </th>
+            </div>
         );
 
     // Gets the remaining rows for the table
@@ -28,34 +28,36 @@ export default () => {
         .map((scoreboardRow, index) => {
             // Check if this is the only row or it is not the last row
             if (scoreboard.length === 1 || index < scoreboard.length - 1 || scoreboardRow[0] !== null) {
-                return <tr className="scoreboard-score-row" key={index}>
+                return <div key={index} className="scoreboard-score-row" style={{ gridTemplateColumns: `repeat(${numPlayers}, auto)` }}>
                     {
                         scoreboardRow
                             .map((column, index2) =>
-                                <th key={index2}>
-                                    {column === null ? "--" : column}
-                                </th>
+                                <div className="flex-center-column" style={{ borderRight: "2px solid black" }}>
+                                    <div key={index2} className="scoreboard-score-item flex-center-column">
+                                        {column === null ? "--" : column}
+                                    </div>
+                                </div>
                             )
                     }
-                </tr>
+                </div>
             }
         });
 
     return (
-        <div className="game-scoreboard-container">
+        <div>
             {gameState === "start" ?
                 <div className="game-scoreboard-placeholder flex-center-column">
                     No game being played!
                 </div> :
 
                 <div className="game-scoreboard">
-                    <table className="scoreboard-table">
-                        <tr>
+                    <div className="scoreboard-table">
+                        <div className="scoreboard-player-header" style={{ gridTemplateColumns: `repeat(${numPlayers}, auto)` }}>
                             {playerHeaders}
-                        </tr>
+                        </div>
 
                         {remainingRows}
-                    </table>
+                    </div>
                 </div>
             }
         </div>
