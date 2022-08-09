@@ -93,7 +93,7 @@ export default () => {
             </button>
 
             <button onClick={goToStart} className="end-start-screen-button app-button">
-                Go to Start Screen
+                Change number of players
             </button>
         </div>
     </div >
