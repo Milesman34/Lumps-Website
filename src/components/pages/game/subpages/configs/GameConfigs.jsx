@@ -3,8 +3,14 @@ import "./GameConfigs.css"
 import "../../../../../common.css"
 import { useEffect, useState } from "react";
 import { checkboxLabel } from "../../../../../utils";
+import { useDispatch } from "react-redux";
+import { updateConfigs } from "../../../../../redux/actions/game";
 
 export default () => {
+    // Dispatch object
+    const dispatch = useDispatch();
+
+    // State object for the form data
     const [formData, setFormData] = useState({
         cleanSlateEnabled: false,
         cleanSlatePerTurn: "1"
@@ -25,7 +31,12 @@ export default () => {
 
     // Handles changes to form data
     useEffect(() => {
-        console.log("form data changed", formData);
+        dispatch(updateConfigs({
+            cleanSlate: {
+                enabled: formData.cleanSlateEnabled,
+                perTurn: parseInt(formData.cleanSlatePerTurn)
+            }
+        }));
     }, [formData]);
 
     return (

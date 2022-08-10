@@ -54,6 +54,12 @@ export const resetDice = () => ({
     type: "RESET_DICE"
 });
 
+// Updates the configs
+export const updateConfigs = configs => ({
+    type: "UPDATE_CONFIGS",
+    payload: configs
+});
+
 // Resets the game (this is not an action, but can be called by passing dispatch)
 export const resetGame = dispatch => {
     dispatch(resetScores());

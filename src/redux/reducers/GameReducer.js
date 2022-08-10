@@ -192,6 +192,13 @@ export default (state = initialState, action) => {
                 dice: diceSides.map(sides => Die(sides))
             }
 
+        // Updates the configs
+        case "UPDATE_CONFIGS":
+            return {
+                ...state,
+                configs: Object.assign({}, state.configs, action.payload)
+            }
+
         default:
             return state;
     }
