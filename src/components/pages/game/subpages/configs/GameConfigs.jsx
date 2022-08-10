@@ -13,7 +13,9 @@ export default () => {
     // State object for the form data
     const [formData, setFormData] = useState({
         cleanSlateEnabled: false,
-        cleanSlatePerTurn: "1"
+        cleanSlatePerTurn: "1",
+        desperationEnabled: false,
+        desperationRepeatable: false
     });
 
     // Handles changes to the form
@@ -35,6 +37,11 @@ export default () => {
             cleanSlate: {
                 enabled: formData.cleanSlateEnabled,
                 perTurn: parseInt(formData.cleanSlatePerTurn)
+            },
+
+            desperation: {
+                enabled: formData.desperationEnabled,
+                repeatable: formData.desperationRepeatable
             }
         }));
     }, [formData]);
@@ -63,6 +70,26 @@ export default () => {
                             <div className="form-radio-entry">
                                 <input className="form-radio-input" type="radio" checked={formData.cleanSlatePerTurn === "2"} value="2" name="cleanSlatePerTurn" onChange={handleChange} />
                                 <div className="form-radio-label">2</div>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                <div className="form-area-title" style={{ margin: 10 }}>Desperation</div>
+                <div className="form-area-description">Desperation allows you to re-roll all your dice after the end of a turn.</div>
+
+                <div className="form-inputs-container">
+                    <div className="form-checkbox">
+                        <input type="checkbox" id="desperation" name="desperationEnabled" checked={formData.desperationEnabled} onChange={handleChange} />
+                        <label htmlFor="desperation">{checkboxLabel(formData.desperationEnabled)}</label>
+                    </div>
+
+                    {
+                        formData.desperationEnabled && <div className="form-checkbox-container"> 
+                            <div className="desperation-description">Should Desperation be possible more than once per game?</div>
+                            <div className="form-checkbox">
+                                <input type="checkbox" id="desperation-repeatable" name="desperationRepeatable" checked={formData.desperationRepeatable} onChange={handleChange} />
+                                <label htmlFor="desperation-repeatable"></label>
                             </div>
                         </div>
                     }

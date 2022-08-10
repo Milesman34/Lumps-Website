@@ -20,12 +20,19 @@
 
     align-items: left;
 
-    width: 250px;
+    width: 500px;
+
+    margin-top: 1.5%;
+}
+
+.form-checkbox-container {
+    display: flex;
+
+    flex-direction: row;
 }
 
 .form-checkbox {
-    margin: 1%;
-    width: 100%;
+    margin: 0.5%;
 
     display: flex;
 
@@ -75,4 +82,8 @@
 
 .form-radio-label {
     font-size: 1.15rem;
+}
+
+.desperation-description {
+    font-size: 0.9rem;
 }
