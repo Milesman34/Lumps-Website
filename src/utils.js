@@ -129,10 +129,12 @@ const checkboxLabel = enabled => enabled ? "Enabled" : "Disabled";
 // Gets a local storage item, setting it with a default if it doesn't exist
 const localStorageGetOrDefault = (path, defaultValue) => {
     const result = localStorage.getItem(path);
+    console.log(path, result, defaultValue)
 
     // If it doesn't exist then add it to localStorage
-    if (result === null || result === undefined) {
+    if (result === null || result === undefined || result === "undefined") {
         localStorage.setItem(path, JSON.stringify(defaultValue));
+        return defaultValue;
     } else {
         return JSON.parse(result);
     }
