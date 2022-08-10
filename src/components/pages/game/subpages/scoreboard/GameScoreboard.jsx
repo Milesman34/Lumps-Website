@@ -31,6 +31,7 @@ export default () => {
             .concat(scoreboard[scoreboard.length - 1]);
 
     // For minimums we check the last non-null value of each column
+    // We need to check if the length is 1 so that it doesn't go over it and cause issues
     const lastNonNull = scoreboard.length === 1 ?
         scoreboard[0] :
         scoreboard[scoreboard.length - 1]
@@ -55,7 +56,7 @@ export default () => {
                                 // Figures out what class should be used for minimum/maximum
                                 let textClass = ""
 
-                                // We need to check if the index of this one is in the last two
+                                // We need to check if the index of this one is in the last two (and if its in the 2nd to last one, the one after it must be empty)
                                 if (index === scoreboard.length - 1 || (index === scoreboard.length - 2 && scoreboard[scoreboard.length - 1][index2] === null)) {
                                     textClass = column === maximum ?
                                         "maximum-item" : column === minimum ?

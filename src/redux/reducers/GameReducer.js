@@ -25,7 +25,31 @@ const initialState = {
     gameState: "start",
 
     // The current scoreboard
-    scoreboard: [[null, null]]
+    scoreboard: [[null, null]],
+
+    // The game's configs
+    configs: {
+        // Clean slate (re-roll all dice after a roll, keep 6/8 depending on which roll)
+        cleanSlate: {
+            // Is clean slate enabled?
+            enabled: false,
+
+            // How many clean slates can you do per turn?
+            perTurn: 1
+        },
+
+        // Desperation (re-roll all dice after end of turn)
+        desperation: {
+            // Is desperation enabled?
+            enabled: false,
+
+            // Can you do desperation more than once per game?
+            repeatable: false
+        },
+
+        // Should each player get another chance to roll after someone reaches 100? (features tiebreaker)
+        extraChance: false
+    }
 }
 
 // Reducer for key state elements of the game
