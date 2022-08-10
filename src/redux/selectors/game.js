@@ -39,9 +39,13 @@ const selectNumPlayers = state => state.game.numPlayers;
 // Selects the scoreboard
 const selectScoreboard = state => state.game.scoreboard;
 
+// Selects the game's configs
+const selectConfigs = state => state.game.configs;
+
 export {
     selectBeingPlayed,
     selectCanRollDice,
+    selectConfigs,
     selectCurrentIndex,
     selectCurrentScore,
     selectDice,

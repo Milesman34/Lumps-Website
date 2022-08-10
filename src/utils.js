@@ -126,6 +126,18 @@ const getWinningPlayer = scores => scores
 // Returns a string for the label of a checkbox
 const checkboxLabel = enabled => enabled ? "Enabled" : "Disabled";
 
+// Gets a local storage item, setting it with a default if it doesn't exist
+const localStorageGetOrDefault = (path, defaultValue) => {
+    const result = localStorage.getItem(path);
+
+    // If it doesn't exist then add it to localStorage
+    if (result === null || result === undefined) {
+        localStorage.setItem(path, JSON.stringify(defaultValue));
+    } else {
+        return JSON.parse(result);
+    }
+}
+
 export {
     calculateScore,
     canRollDice,
@@ -134,6 +146,7 @@ export {
     getWinningPlayer,
     isEven,
     isTurnOver,
+    localStorageGetOrDefault,
     numMoreDiceToKeep,
     numDiceMustKeep,
     numDiceWillBeLocked,

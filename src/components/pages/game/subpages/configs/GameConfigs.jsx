@@ -2,13 +2,17 @@ import "./GameConfigs.css"
 
 import "../../../../../common.css"
 import { useEffect, useState } from "react";
-import { checkboxLabel } from "../../../../../utils";
-import { useDispatch } from "react-redux";
+import { checkboxLabel, localStorageGetOrDefault } from "../../../../../utils";
+import { useDispatch, useSelector } from "react-redux";
 import { updateConfigs } from "../../../../../redux/actions/game";
+import { selectConfigs } from "../../../../../redux/selectors/game";
 
 export default () => {
     // Dispatch object
     const dispatch = useDispatch();
+
+    // Current configs in the game
+    const configs = useSelector(selectConfigs);
 
     // State object for the form data
     const [formData, setFormData] = useState({
@@ -32,6 +36,18 @@ export default () => {
         }));
     }
 
+    // Loads local storage
+    useEffect(() => {
+        // Sets the form data first, then the effect relying on form data updates the configs
+        setFormData({
+            cleanSlateEnabled: localStorageGetOrDefault("cleanSlateEnabled", configs.cleanSlate.enabled),
+            cleanSlatePerTurn: localStorageGetOrDefault("cleanSlatePerTurn", configs.cleanSlate.perTurn).toString(),
+            desperationEnabled: localStorageGetOrDefault("desperationEnabled", configs.desperation.enabled),
+            desperationRepeatable: localStorageGetOrDefault("desperationRepeatable", configs.desperation.repeatable),
+            extraChance: localStorageGetOrDefault("extraChance", configs.extraChance)
+        });
+    }, []);
+
     // Handles changes to form data
     useEffect(() => {
         dispatch(updateConfigs({
@@ -47,6 +63,13 @@ export default () => {
 
             extraChance: formData.extraChance
         }));
+
+        // Saves to localstorage
+        localStorage.setItem("cleanSlateEnabled", formData.cleanSlateEnabled.toString());
+        localStorage.setItem("cleanSlatePerTurn", formData.cleanSlatePerTurn);
+        localStorage.setItem("desperationEnabled", formData.desperationEnabled.toString());
+        localStorage.setItem("desperationRepeatable", formData.desperationRepeatable.toString());
+        localStorage.setItem("extraChance", formData.extraChance.toString());
     }, [formData]);
 
     return (
@@ -88,7 +111,7 @@ export default () => {
                     </div>
 
                     {
-                        formData.desperationEnabled && <div className="form-checkbox-container"> 
+                        formData.desperationEnabled && <div className="form-checkbox-container">
                             <div className="desperation-description">Should Desperation be possible more than once per game?</div>
                             <div className="form-checkbox">
                                 <input type="checkbox" id="desperation-repeatable" name="desperationRepeatable" checked={formData.desperationRepeatable} onChange={handleChange} />
