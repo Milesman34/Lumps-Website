@@ -123,10 +123,14 @@ const getWinningPlayer = scores => scores
     .map((element, index) => [element, index])
     .reduce((a, b) => b[0] > a[0] ? b : a, [-1, -1])[1];
 
+// Returns a string for the label of a checkbox
+const checkboxLabel = enabled => enabled ? "Enabled" : "Disabled";
+
 export {
     calculateScore,
     canRollDice,
     capitalize,
+    checkboxLabel,
     getWinningPlayer,
     isEven,
     isTurnOver,
