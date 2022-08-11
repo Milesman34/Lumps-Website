@@ -1,5 +1,5 @@
 import Die from "../../components/common/objects/Die"
-import { randint, willTurnBeOver } from "../../utils"
+import { localStorageGetOrDefault, randint, willTurnBeOver } from "../../utils"
 import { defaultConfigs } from "../../defaults"
 
 // Array of the number of sides of dice
@@ -32,7 +32,19 @@ const initialState = {
     cleanSlateUses: 0,
 
     // The game's configs
-    configs: { ...defaultConfigs }
+    configs: {
+        cleanSlate: {
+            enabled: localStorageGetOrDefault("cleanSlateEnabled", defaultConfigs.cleanSlate.enabled),
+            perTurn: localStorageGetOrDefault("cleanSlatePerTurn", defaultConfigs.cleanSlate.perTurn).toString()
+        },
+
+        desperation: {
+            enabled: localStorageGetOrDefault("desperationEnabled", defaultConfigs.desperation.enabled),
+            repeatable: localStorageGetOrDefault("desperationRepeatable", defaultConfigs.desperation.repeatable)
+        },
+
+        extraChance: localStorageGetOrDefault("extraChance", defaultConfigs.extraChance)
+    }
 }
 
 // Reducer for key state elements of the game

@@ -16,11 +16,11 @@ export default () => {
 
     // State object for the form data
     const [formData, setFormData] = useState({
-        cleanSlateEnabled: false,
-        cleanSlatePerTurn: "1",
-        desperationEnabled: false,
-        desperationRepeatable: false,
-        extraChance: false
+        cleanSlateEnabled: configs.cleanSlate.enabled,
+        cleanSlatePerTurn: configs.cleanSlate.perTurn.toString(),
+        desperationEnabled: configs.desperation.enabled,
+        desperationRepeatable: configs.desperation.repeatable,
+        extraChance: configs.extraChance
     });
 
     // Handles changes to the form
@@ -35,18 +35,6 @@ export default () => {
             [name]: value
         }));
     }
-
-    // Loads local storage
-    useEffect(() => {
-        // Sets the form data first, then the effect relying on form data updates the configs
-        setFormData({
-            cleanSlateEnabled: localStorageGetOrDefault("cleanSlateEnabled", configs.cleanSlate.enabled),
-            cleanSlatePerTurn: localStorageGetOrDefault("cleanSlatePerTurn", configs.cleanSlate.perTurn).toString(),
-            desperationEnabled: localStorageGetOrDefault("desperationEnabled", configs.desperation.enabled),
-            desperationRepeatable: localStorageGetOrDefault("desperationRepeatable", configs.desperation.repeatable),
-            extraChance: localStorageGetOrDefault("extraChance", configs.extraChance)
-        });
-    }, []);
 
     // Handles changes to form data
     useEffect(() => {
