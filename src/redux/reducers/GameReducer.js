@@ -1,5 +1,6 @@
 import Die from "../../components/common/objects/Die"
 import { randint, willTurnBeOver } from "../../utils"
+import { defaultConfigs } from "../../defaults"
 
 // Array of the number of sides of dice
 const diceSides = [4, 4, 6, 6, 8, 8, 10, 10];
@@ -31,28 +32,7 @@ const initialState = {
     cleanSlateUses: 0,
 
     // The game's configs
-    configs: {
-        // Clean slate (re-roll all dice after a roll, keep 6/8 depending on which roll)
-        cleanSlate: {
-            // Is clean slate enabled?
-            enabled: false,
-
-            // How many clean slates can you do per turn?
-            perTurn: 1
-        },
-
-        // Desperation (re-roll all dice after end of turn)
-        desperation: {
-            // Is desperation enabled?
-            enabled: false,
-
-            // Can you do desperation more than once per game?
-            repeatable: false
-        },
-
-        // Should each player get another chance to roll after someone reaches 100? (features tiebreaker)
-        extraChance: false
-    }
+    configs: { ...defaultConfigs }
 }
 
 // Reducer for key state elements of the game
