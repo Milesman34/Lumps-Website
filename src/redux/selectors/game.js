@@ -22,10 +22,10 @@ const selectDice = state => state.game.dice;
 const selectRollsLeft = state => state.game.rollsLeft;
 
 // Selects how many more dice the player must keep
-const selectNumMoreDiceToKeep = state => numMoreDiceToKeep(state.game.dice, state.game.rollsLeft);
+const selectNumMoreDiceToKeep = state => numMoreDiceToKeep(state.game.dice, state.game.rollsLeft, state.game.cleanSlateUses);
 
 // Can the player roll the dice?
-const selectCanRollDice = state => canRollDice(state.game.dice, state.game.rollsLeft);
+const selectCanRollDice = state => canRollDice(state.game.dice, state.game.rollsLeft, state.game.cleanSlateUses);
 
 // Is the player's turn over?
 const selectIsTurnOver = state => isTurnOver(state.game.dice, state.game.rollsLeft);
@@ -42,9 +42,16 @@ const selectScoreboard = state => state.game.scoreboard;
 // Selects the game's configs
 const selectConfigs = state => state.game.configs;
 
+// Selects if clean slate can be used (it must be enabled and the player has used it fewer times and their turn isn't over)
+const selectCanUseCleanSlate = state =>
+    state.game.configs.cleanSlate.enabled &&
+    !isTurnOver(state.game.dice, state.game.rollsLeft) &&
+    state.game.cleanSlateUses < state.game.configs.cleanSlate.perTurn;
+
 export {
     selectBeingPlayed,
     selectCanRollDice,
+    selectCanUseCleanSlate,
     selectConfigs,
     selectCurrentIndex,
     selectCurrentScore,

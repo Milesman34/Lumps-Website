@@ -87,7 +87,7 @@ const rollDie = die => ({
 const numUnlockedDice = dice => dice.filter(die => !die.isLocked).length;
 
 // Returns how many dice the player must keep
-const numDiceMustKeep = (dice, rolls) => {
+const numDiceMustKeep = (dice, rolls, cleanSlateUses) => {
     // Number of unlocked dice
     const numUnlocked = numUnlockedDice(dice);
 
@@ -96,7 +96,11 @@ const numDiceMustKeep = (dice, rolls) => {
             return numUnlocked;
 
         case 1:
-            return numUnlocked >= 2 ? 2 : numUnlocked;
+            if (cleanSlateUses === 0) {
+                return numUnlocked >= 2 ? 2 : numUnlocked;
+            } else {
+                return 6;
+            }
 
         case 2:
             return 4;
@@ -107,10 +111,10 @@ const numDiceMustKeep = (dice, rolls) => {
 const numDiceWillBeLocked = dice => dice.filter(die => die.willBeLocked).length;
 
 // Returns how many more dice the player must keep
-const numMoreDiceToKeep = (dice, rolls) => numDiceMustKeep(dice, rolls) - numDiceWillBeLocked(dice);
+const numMoreDiceToKeep = (dice, rolls, cleanSlateUses) => numDiceMustKeep(dice, rolls, cleanSlateUses) - numDiceWillBeLocked(dice);
 
 // Can the player roll the dice?
-const canRollDice = (dice, rolls) => numDiceWillBeLocked(dice) >= numDiceMustKeep(dice, rolls);
+const canRollDice = (dice, rolls, cleanSlateUses) => numDiceWillBeLocked(dice) >= numDiceMustKeep(dice, rolls, cleanSlateUses);
 
 // Is the current player's turn over?
 const isTurnOver = (dice, rolls) => numUnlockedDice(dice) <= 2 || rolls === 0;
@@ -129,7 +133,6 @@ const checkboxLabel = enabled => enabled ? "Enabled" : "Disabled";
 // Gets a local storage item, setting it with a default if it doesn't exist
 const localStorageGetOrDefault = (path, defaultValue) => {
     const result = localStorage.getItem(path);
-    console.log(path, result, defaultValue)
 
     // If it doesn't exist then add it to localStorage
     if (result === null || result === undefined || result === "undefined") {

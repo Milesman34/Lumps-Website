@@ -27,6 +27,9 @@ const initialState = {
     // The current scoreboard
     scoreboard: [[null, null]],
 
+    // How many times has the player used clean slate in the current turn
+    cleanSlateUses: 0,
+
     // The game's configs
     configs: {
         // Clean slate (re-roll all dice after a roll, keep 6/8 depending on which roll)
@@ -197,6 +200,20 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 configs: Object.assign({}, state.configs, action.payload)
+            }
+
+        // Sets the number of clean slate uses
+        case "SET_CLEAN_SLATE_USES":
+            return {
+                ...state,
+                cleanSlateUses: action.payload
+            }
+
+        // Increments the number of clean slate uses
+        case "INCREMENT_CLEAN_SLATE_USES":
+            return {
+                ...state,
+                cleanSlateUses: state.cleanSlateUses + 1
             }
 
         default:

@@ -60,6 +60,17 @@ export const updateConfigs = configs => ({
     payload: configs
 });
 
+// Sets the number of clean slate uses
+export const setCleanSlateUses = value => ({
+    type: "SET_CLEAN_SLATE_USES",
+    payload: value
+});
+
+// Increments the number of clean slate uses
+export const incrementCleanSlateUses = () => ({
+    type: "INCREMENT_CLEAN_SLATE_USES"
+});
+
 // Resets the game (this is not an action, but can be called by passing dispatch)
 export const resetGame = dispatch => {
     dispatch(resetScores());
@@ -72,5 +83,12 @@ export const endTurn = (dispatch, score) => {
     dispatch(addScore(score));
     dispatch(setRollsLeft(2));
     dispatch(resetDice());
+    dispatch(setCleanSlateUses(0));
     dispatch(incrementCurrentIndex());
+}
+
+// Runs clean slate
+export const cleanSlate = dispatch => {
+    dispatch(incrementCleanSlateUses());
+    dispatch(rollDice());
 }

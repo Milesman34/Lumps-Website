@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux"
-import { selectCurrentIndex, selectCurrentScore, selectDice, selectGameState, selectIsTurnOver, selectRollsLeft, selectWinningPlayer } from "../../../../../redux/selectors/game"
+import { selectCanUseCleanSlate, selectCurrentIndex, selectCurrentScore, selectDice, selectGameState, selectIsTurnOver, selectRollsLeft, selectWinningPlayer } from "../../../../../redux/selectors/game"
 import "./GameComponent.css"
 import "../../../../../common.css"
 
@@ -8,6 +8,7 @@ import GameScoreHeader from "./score-header/GameScoreHeader"
 import GameRollButton from "./roll-button/GameRollButton"
 import EndTurnButton from "./end-turn-button/EndTurnButton"
 import { resetGame, setGameState } from "../../../../../redux/actions/game"
+import CleanSlateButton from "./clean-slate-button/CleanSlateButton"
 
 export default () => {
     // Dispatch to use
@@ -33,6 +34,9 @@ export default () => {
 
     // Current list of dice
     const dice = useSelector(selectDice);
+    
+    // Is the clean slate button enabled
+    const cleanSlateEnabled = useSelector(selectCanUseCleanSlate);
 
     // Returns the text used to display the number of rolls left
     const rollsLeftText = () => {
@@ -79,6 +83,8 @@ export default () => {
         {isTurnOver || <GameRollButton />}
 
         <EndTurnButton />
+
+        {cleanSlateEnabled && <CleanSlateButton />}
 
         <div className="flex-center-row">
             <button onClick={() => confirm("Do you want to exit the game?") && goToStart()} className="exit-game-button app-button">
