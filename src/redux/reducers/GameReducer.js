@@ -108,9 +108,22 @@ export default (state = initialState, action) => {
             const currentScore = newScores[state.currentIndex];
 
             // Checks if the game ends after this turn (if extraChance is on, it only ends if the current player is the last player)
-            const didGameEnd = state.configs.extraChance ? 
-                state.currentIndex === state.numPlayers - 1 && (currentScore >= 100 || state.extraChanceActivated) :
-                currentScore >= 100;
+            let didGameEnd = false;
+
+            if (state.configs.extraChance) {
+                // This only happens when its the last player's turn
+                if (state.currentIndex === state.numPlayers - 1) {
+                    // Checks for ties by comparing each score to the winner's score
+                    const winnerScore = Math.max.apply(null, newScores);
+
+                    didGameEnd = (currentScore >= 100 || state.extraChanceActivated) &&
+                        newScores
+                            .filter(score => score === winnerScore)
+                            .length === 1;
+                }
+            } else if (currentScore >= 100) {
+                didGameEnd = true;
+            }
 
             // Number of turns the players have taken
             const numTurns = state.scoreboard.length;

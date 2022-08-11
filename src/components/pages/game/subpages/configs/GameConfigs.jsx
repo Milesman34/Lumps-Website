@@ -110,7 +110,7 @@ export default () => {
                 </div>
 
                 <div className="form-area-title" style={{ margin: 10 }}>Extra Chance</div>
-                <div className="form-area-description">Once someone reaches 100 points, everyone else gets another roll if they have not had as many rolls as the current leader. If there is a tie, the two or more players tied take one more turn each.</div>
+                <div className="form-area-description">Once someone reaches 100 points, everyone else gets another roll if they have not had as many rolls as the current leader. If there is a tie, everyone gets one more roll until the tie is broken.</div>
 
                 <div className="form-inputs-container">
                     <div className="form-checkbox">
