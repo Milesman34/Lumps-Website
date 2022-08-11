@@ -87,6 +87,12 @@ export const setDesperationActivated = value => ({
     payload: value
 });
 
+// Sets if extra chance iss activated
+export const setExtraChanceActivated = value => ({
+    type: "SET_EXTRA_CHANCE_ACTIVATED",
+    payload: value
+});
+
 // Resets the game (this is not an action, but can be called by passing dispatch)
 export const resetGame = dispatch => {
     dispatch(resetScores());
@@ -95,6 +101,7 @@ export const resetGame = dispatch => {
     dispatch(resetDice());
     dispatch(setCleanSlateUses(0));
     dispatch(setRollsLeft(2));
+    dispatch(setExtraChanceActivated(false));
 }
 
 // Ends the current turn

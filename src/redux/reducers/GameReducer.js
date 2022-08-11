@@ -37,6 +37,9 @@ const initialState = {
     // Did the player activate desperation this turn
     desperationActivated: false,
 
+    // Has extra chance been activated? (someone reached 100)
+    extraChanceActivated: false,
+
     // The game's configs
     configs: {
         cleanSlate: {
@@ -104,8 +107,10 @@ export default (state = initialState, action) => {
             // Gets the score of the current player
             const currentScore = newScores[state.currentIndex];
 
-            // Checks if the player won
-            const didWin = currentScore >= 100;
+            // Checks if the game ends after this turn (if extraChance is on, it only ends if the current player is the last player)
+            const didGameEnd = state.configs.extraChance ? 
+                state.currentIndex === state.numPlayers - 1 && (currentScore >= 100 || state.extraChanceActivated) :
+                currentScore >= 100;
 
             // Number of turns the players have taken
             const numTurns = state.scoreboard.length;
@@ -125,7 +130,9 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 scores: newScores,
-                gameState: didWin ? "end" : "game",
+                gameState: didGameEnd ? "end" : "game",
+                extraChanceActivated: state.extraChanceActivated || currentScore >= 100,
+
                 // We need to check if the current player is the last one, and if it does then we add another blank row
                 scoreboard: state.currentIndex === state.numPlayers - 1 ?
                     newScoreboard
@@ -250,6 +257,14 @@ export default (state = initialState, action) => {
                 ...state,
 
                 desperationActivated: action.payload
+            }
+
+        // Sets if extra chance is activated
+        case "SET_EXTRA_CHANCE_ACTIVATED":
+            return {
+                ...state,
+
+                extraChanceActivated: action.payload
             }
 
         default:
