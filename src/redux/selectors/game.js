@@ -48,10 +48,21 @@ const selectCanUseCleanSlate = state =>
     !isTurnOver(state.game.dice, state.game.rollsLeft) &&
     state.game.cleanSlateUses < state.game.configs.cleanSlate.perTurn;
 
+// Can the current player use desperation? (it must be enabled and either repeatable or that player has not used it + player turn is over)
+const selectCanUseDesperation = state =>
+    state.game.configs.desperation.enabled &&
+    !state.game.desperationActivated &&
+    isTurnOver(state.game.dice, state.game.rollsLeft) &&
+    (
+        state.game.configs.desperation.repeatable ||
+        !state.game.desperationUsed[state.game.currentIndex]
+    );
+
 export {
     selectBeingPlayed,
     selectCanRollDice,
     selectCanUseCleanSlate,
+    selectCanUseDesperation,
     selectConfigs,
     selectCurrentIndex,
     selectCurrentScore,

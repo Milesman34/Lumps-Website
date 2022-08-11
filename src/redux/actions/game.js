@@ -76,6 +76,17 @@ export const cleanSlate = () => ({
     type: "CLEAN_SLATE"
 });
 
+// Activates desperation
+export const desperation = () => ({
+    type: "DESPERATION"
+});
+
+// Sets if desperation was activated this turn
+export const setDesperationActivated = value => ({
+    type: "SET_DESPERATION_ACTIVATED",
+    payload: value
+});
+
 // Resets the game (this is not an action, but can be called by passing dispatch)
 export const resetGame = dispatch => {
     dispatch(resetScores());
@@ -93,4 +104,5 @@ export const endTurn = (dispatch, score) => {
     dispatch(resetDice());
     dispatch(setCleanSlateUses(0));
     dispatch(incrementCurrentIndex());
+    dispatch(setDesperationActivated(false));
 }

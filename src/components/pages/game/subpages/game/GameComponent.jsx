@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux"
-import { selectCanUseCleanSlate, selectCurrentIndex, selectCurrentScore, selectDice, selectGameState, selectIsTurnOver, selectRollsLeft, selectWinningPlayer } from "../../../../../redux/selectors/game"
+import { selectCanUseCleanSlate, selectCanUseDesperation, selectCurrentIndex, selectCurrentScore, selectDice, selectGameState, selectIsTurnOver, selectRollsLeft, selectWinningPlayer } from "../../../../../redux/selectors/game"
 import "./GameComponent.css"
 import "../../../../../common.css"
 
@@ -9,6 +9,7 @@ import GameRollButton from "./roll-button/GameRollButton"
 import EndTurnButton from "./end-turn-button/EndTurnButton"
 import { resetGame, setGameState } from "../../../../../redux/actions/game"
 import CleanSlateButton from "./clean-slate-button/CleanSlateButton"
+import DesperationButton from "./desperation-button/DesperationButton"
 
 export default () => {
     // Dispatch to use
@@ -34,9 +35,12 @@ export default () => {
 
     // Current list of dice
     const dice = useSelector(selectDice);
-    
+
     // Is the clean slate button enabled
     const cleanSlateEnabled = useSelector(selectCanUseCleanSlate);
+
+    // Is the desperation button enabled
+    const desperationEnabled = useSelector(selectCanUseDesperation);
 
     // Returns the text used to display the number of rolls left
     const rollsLeftText = () => {
@@ -85,6 +89,8 @@ export default () => {
         <EndTurnButton />
 
         {cleanSlateEnabled && <CleanSlateButton />}
+
+        {desperationEnabled && <DesperationButton />}
 
         <div className="flex-center-row">
             <button onClick={() => confirm("Do you want to exit the game?") && goToStart()} className="exit-game-button app-button">

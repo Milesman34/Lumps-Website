@@ -31,6 +31,12 @@ const initialState = {
     // How many times has the player used clean slate in the current turn
     cleanSlateUses: 0,
 
+    // Has each player used desperation?
+    desperationUsed: [false, false],
+
+    // Did the player activate desperation this turn
+    desperationActivated: false,
+
     // The game's configs
     configs: {
         cleanSlate: {
@@ -47,6 +53,13 @@ const initialState = {
     }
 }
 
+// Returns an object containing parts of the state copied whenever the game is reset/number of players are changed
+const playersChangedState = players => ({
+    scores: Array(players).fill(0),
+    scoreboard: [Array(players).fill(null)],
+    desperationUsed: Array(players).fill(false)
+})
+
 // Reducer for key state elements of the game
 export default (state = initialState, action) => {
     switch (action.type) {
@@ -55,9 +68,9 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 numPlayers: action.payload,
+
                 // Scores are also reset when changing the number of players
-                scores: Array(action.payload).fill(0),
-                scoreboard: [Array(action.payload).fill(null)]
+                ...playersChangedState(action.payload)
             }
 
         // Sets the current player index
@@ -78,8 +91,7 @@ export default (state = initialState, action) => {
         case "RESET_SCORES":
             return {
                 ...state,
-                scores: Array(state.numPlayers).fill(0),
-                scoreboard: [Array(state.numPlayers).fill(null)]
+                ...playersChangedState(state.numPlayers)
             }
 
         // Adds to the current score
@@ -214,6 +226,30 @@ export default (state = initialState, action) => {
 
                 // Resets the dice
                 dice: diceSides.map(sides => Die(sides, newRollsLeft === 0))
+            }
+
+        // Runs desperation
+        case "DESPERATION":
+            return {
+                ...state,
+
+                // Player cannot roll again this turn
+                rollsLeft: 0,
+
+                // The current player used desperation
+                desperationUsed: state.desperationUsed.map((used, index) => index === state.currentIndex ? true : used),
+                desperationActivated: true,
+
+                // Resets the dice
+                dice: diceSides.map(sides => Die(sides, true))
+            }
+
+        // Sets if desperation was activated this turn
+        case "SET_DESPERATION_ACTIVATED":
+            return {
+                ...state,
+
+                desperationActivated: action.payload
             }
 
         default:
