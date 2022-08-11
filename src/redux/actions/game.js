@@ -76,6 +76,9 @@ export const resetGame = dispatch => {
     dispatch(resetScores());
     dispatch(setCurrentIndex(0));
     dispatch(setGameState("game"));
+    dispatch(resetDice());
+    dispatch(setCleanSlateUses(0));
+    dispatch(setRollsLeft(2));
 }
 
 // Ends the current turn

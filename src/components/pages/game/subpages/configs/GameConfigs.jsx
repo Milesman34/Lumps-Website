@@ -2,7 +2,7 @@ import "./GameConfigs.css"
 
 import "../../../../../common.css"
 import { useEffect, useState } from "react";
-import { checkboxLabel, localStorageGetOrDefault } from "../../../../../utils";
+import { checkboxLabel } from "../../../../../utils";
 import { useDispatch, useSelector } from "react-redux";
 import { updateConfigs } from "../../../../../redux/actions/game";
 import { selectConfigs } from "../../../../../redux/selectors/game";
