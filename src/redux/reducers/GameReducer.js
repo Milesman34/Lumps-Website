@@ -201,11 +201,19 @@ export default (state = initialState, action) => {
                 cleanSlateUses: action.payload
             }
 
-        // Increments the number of clean slate uses
-        case "INCREMENT_CLEAN_SLATE_USES":
+        // Runs clean slate
+        case "CLEAN_SLATE":
+            const newRollsLeft = state.rollsLeft - 1;
+
             return {
                 ...state,
-                cleanSlateUses: state.cleanSlateUses + 1
+                cleanSlateUses: state.cleanSlateUses + 1,
+
+                // When this happens it uses a roll
+                rollsLeft: newRollsLeft,
+
+                // Resets the dice
+                dice: diceSides.map(sides => Die(sides, newRollsLeft === 0))
             }
 
         default:

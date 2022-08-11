@@ -8,7 +8,7 @@ export default () => {
 
     // Clean slate function
     const handleClick = () => {
-        cleanSlate(dispatch);
+        dispatch(cleanSlate());
     }
 
     return (

@@ -71,6 +71,11 @@ export const incrementCleanSlateUses = () => ({
     type: "INCREMENT_CLEAN_SLATE_USES"
 });
 
+// Runs clean slate
+export const cleanSlate = () => ({
+    type: "CLEAN_SLATE"
+});
+
 // Resets the game (this is not an action, but can be called by passing dispatch)
 export const resetGame = dispatch => {
     dispatch(resetScores());
@@ -88,10 +93,4 @@ export const endTurn = (dispatch, score) => {
     dispatch(resetDice());
     dispatch(setCleanSlateUses(0));
     dispatch(incrementCurrentIndex());
-}
-
-// Runs clean slate
-export const cleanSlate = dispatch => {
-    dispatch(incrementCleanSlateUses());
-    dispatch(rollDice());
 }
