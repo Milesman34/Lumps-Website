@@ -84,7 +84,7 @@ export default () => {
             {dieComponents}
         </div>
 
-        {isTurnOver || <GameRollButton />}
+        {isTurnOver ? <div style={{ height: 75, marginTop: "2.5%" }} /> : <GameRollButton />}
 
         <EndTurnButton />
 
