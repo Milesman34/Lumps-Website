@@ -1,4 +1,3 @@
-import "./BasicsPage.css"
 import "../pages.css"
 
 // Main page for the website
@@ -37,6 +36,7 @@ export default () => {
 
                 <div className="app-page-content">
                     <p>In Lumps, the goal is to reach 100 points before your opponents. Each player takes turns in order, and you can have any number of players. The player who reaches 100 points first wins.</p>
+                    <div className="app-page-linebreak" />
                     <p>In each turn, you get up to 3 rolls. You must keep at least 4 dice after your first roll, and at least 2 dice after your second roll.</p>
                     <p>There are 2 4-sided dice, 2 6-sided dice, 2 8-sided dice, and 2 10-sided dice.</p>
                 </div>
@@ -55,13 +55,14 @@ export default () => {
                     <p className="app-page-h2">Groups</p>
 
                     <p>If you have 2 or more of the same number, then you score points equal to how many additional dice you have with that number.</p>
+                    <div className="app-page-linebreak" />
                     <p>If you have 6 of the same number, you get a 10 points.</p>
                     <p>If you have 7, you get 20 points, and if you have 8, you get 30 points.</p>
                     <p>These bonuses do not stack with themselves, but stack with other types of bonuses.</p>
 
-                    <p className="basics-page-examples-header">Examples:</p>
+                    <p className="app-page-examples-header">Examples:</p>
 
-                    <ul className="basics-page-examples">
+                    <ul className="app-page-examples">
                         {
                             groupScoringExamples.map((example, index) =>
                                 <li key={index}>{example}</li>
@@ -73,14 +74,15 @@ export default () => {
 
                     <p>You can get bonus points by having runs of consecutive numbers.</p>
                     <p>These runs can have pairs in them, so (1 2 2 3 4 4 5 6) would be a valid run.</p>
+                    <div className="app-page-linebreak" />
                     <p>If you have a run of 6, you get 10 points.</p>
                     <p>If you have a run of 7, you get 20 points.</p>
                     <p>If you have a run of 8, you get 30 points.</p>
                     <p>Like groups of numbers, these bonuses do not stack with themselves, but stack with other bonuses.</p>
 
-                    <p className="basics-page-examples-header">Examples:</p>
+                    <p className="app-page-examples-header">Examples:</p>
 
-                    <ul className="basics-page-examples">
+                    <ul className="app-page-examples">
                         {
                             runScoringExamples.map((example, index) =>
                                 <li key={index}>{example}</li>
@@ -92,9 +94,9 @@ export default () => {
 
                     <p>If all of your dice are even or all of your dice are odd, you get 6 additional points.</p>
 
-                    <p className="basics-page-examples-header">Additional Examples:</p>
+                    <p className="app-page-examples-header">Additional Examples:</p>
 
-                    <ul className="basics-page-examples">
+                    <ul className="app-page-examples">
                         {
                             otherScoringExamples.map((example, index) =>
                                 <li key={index}>{example}</li>
@@ -103,12 +105,22 @@ export default () => {
                     </ul>
                 </div>
 
+                <div className="app-page-heading">Education</div>
+
+                <div className="app-page-content">
+                    <p>Lumps can teach people about probability and help them with decision making.</p>
+                    <p>Given the possibilities in a turn, players need to evaluate multiple options and decide the best one. With more play, they develop a better understanding of probability, allowing them to make better decisions in-game.</p>
+                </div>
+
                 <div className="app-page-heading">Variations</div>
 
                 <div className="app-page-content">
                     <p>There are several variations in how you can play the game.</p>
+                    <div className="app-page-linebreak" />
                     <p>For starters, after someone reaches 100 points, you can continue playing until everyone has had the same number of turns. If there is a tie, then each player takes more turns until the tie is broken.</p>
+                    <div className="app-page-linebreak" />
                     <p>You can also do Clean Slates, where you can re-roll all of your dice after a roll. If you do that after your first roll, you must keep 6 dice on the next roll. If you do it after your second roll, you must keep all 8. You can decide if a player should be allowed to do this more than once in a turn.</p>
+                    <div className="app-page-linebreak" />
                     <p>You can also do Desperation, where you can re-roll all of your dice after the end of your turn, keeping the result. You can decide if a player should be allowed to do this more than once per game.</p>
                 </div>
             </div>

@@ -34,3 +34,40 @@
     font-size: 2rem;
     text-align: center;
 }
+
+.app-page-examples-header {
+    font-size: 1.4rem;
+}
+
+.app-page-examples {
+    margin-top: 0;
+    font-size: 0.95rem;
+    line-height: 150%;
+}
+
+.app-page-examples > p {
+    margin: 0;
+}
+
+.app-page-linebreak {
+    margin: 2rem;
+}
+
+/* App page tales */
+.app-page-table {
+    display: flex;
+    flex-direction: column;
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+}
+
+.app-page-table-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.app-page-table-column {
+    border: 1px solid black;
+    height: 30px;
+    font-weight: lighter;
+}
