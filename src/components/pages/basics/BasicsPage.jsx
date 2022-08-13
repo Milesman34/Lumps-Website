@@ -32,27 +32,27 @@ export default () => {
 
     return (
         <div className="page-container">
-            <div className="page basics-page">
-                <div className="basics-page-heading">Information</div>
+            <div className="page app-page">
+                <div className="app-page-heading">Information</div>
 
-                <div className="basics-page-content">
+                <div className="app-page-content">
                     <p>In Lumps, the goal is to reach 100 points before your opponents. Each player takes turns in order, and you can have any number of players. The player who reaches 100 points first wins.</p>
                     <p>In each turn, you get up to 3 rolls. You must keep at least 4 dice after your first roll, and at least 2 dice after your second roll.</p>
                     <p>There are 2 4-sided dice, 2 6-sided dice, 2 8-sided dice, and 2 10-sided dice.</p>
                 </div>
 
-                <div className="basics-page-heading">Where to buy</div>
+                <div className="app-page-heading">Where to buy</div>
 
-                <div className="basics-page-content">
+                <div className="app-page-content">
                     <p><a href="https://continuumgames.com/product/lumps-non-seasonal-edition/#:~:text=The%20dice%20game%20of%20big,score%20the%20most%20points%20possible." target="_blank">Here</a> is a link to the Continuum Games website where you can purchase Lumps. </p>
                 </div>
 
-                <div className="basics-page-heading">Scoring</div>
+                <div className="app-page-heading">Scoring</div>
 
-                <div className="basics-page-content">
+                <div className="app-page-content">
                     <p>After each turn, calculate your score and add it to your total.</p>
 
-                    <p className="basics-page-h2">Groups</p>
+                    <p className="app-page-h2">Groups</p>
 
                     <p>If you have 2 or more of the same number, then you score points equal to how many additional dice you have with that number.</p>
                     <p>If you have 6 of the same number, you get a 10 points.</p>
@@ -69,7 +69,7 @@ export default () => {
                         }
                     </ul>
 
-                    <p className="basics-page-h2">Runs</p>
+                    <p className="app-page-h2">Runs</p>
 
                     <p>You can get bonus points by having runs of consecutive numbers.</p>
                     <p>These runs can have pairs in them, so (1 2 2 3 4 4 5 6) would be a valid run.</p>
@@ -88,7 +88,7 @@ export default () => {
                         }
                     </ul>
 
-                    <p className="basics-page-h2">All Even/Odd</p>
+                    <p className="app-page-h2">All Even/Odd</p>
 
                     <p>If all of your dice are even or all of your dice are odd, you get 6 additional points.</p>
 
@@ -103,9 +103,9 @@ export default () => {
                     </ul>
                 </div>
 
-                <div className="basics-page-heading">Variations</div>
+                <div className="app-page-heading">Variations</div>
 
-                <div className="basics-page-content">
+                <div className="app-page-content">
                     <p>There are several variations in how you can play the game.</p>
                     <p>For starters, after someone reaches 100 points, you can continue playing until everyone has had the same number of turns. If there is a tie, then each player takes more turns until the tie is broken.</p>
                     <p>You can also do Clean Slates, where you can re-roll all of your dice after a roll. If you do that after your first roll, you must keep 6 dice on the next roll. If you do it after your second roll, you must keep all 8. You can decide if a player should be allowed to do this more than once in a turn.</p>

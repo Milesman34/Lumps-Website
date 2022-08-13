@@ -9,3 +9,28 @@
 
     padding-top: 2%;
 }
+
+/* Common classes for pages like basics/strategy */
+.app-page {
+    padding-bottom: 20%;
+}
+
+.app-page-heading {
+    font-size: 3rem;
+    font-weight: light;
+}
+
+.app-page-content {
+    width: 30%;
+    font-size: 1.1rem;
+    line-height: 200%;
+}
+
+.app-page-content>p {
+    margin: 0;
+}
+
+.app-page-h2 {
+    font-size: 2rem;
+    text-align: center;
+}

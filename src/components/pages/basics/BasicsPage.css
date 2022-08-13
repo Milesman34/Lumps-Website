@@ -1,27 +1,3 @@
-.basics-page {
-    padding-bottom: 20%;
-}
-
-.basics-page-heading {  
-    font-size: 3rem;
-    font-weight: light;
-}
-
-.basics-page-content {
-    width: 30%;
-    font-size: 1.1rem;
-    line-height: 200%;
-}
-
-.basics-page-content > p {
-    margin: 0;
-}
-
-.basics-page-h2 {
-    font-size: 2rem;
-    text-align: center;
-}
-
 .basics-page-examples-header {
     font-size: 1.4rem;
 }
