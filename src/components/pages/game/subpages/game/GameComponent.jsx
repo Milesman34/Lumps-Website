@@ -84,13 +84,15 @@ export default () => {
             {dieComponents}
         </div>
 
-        {isTurnOver ? <div style={{ height: 75, marginTop: "2.5%" }} /> : <GameRollButton />}
+        {isTurnOver ? <div style={{ height: 75, marginTop: "1%" }} /> : <GameRollButton />}
 
         <EndTurnButton />
 
         {cleanSlateEnabled && <CleanSlateButton />}
 
         {desperationEnabled && <DesperationButton />}
+
+        {!(cleanSlateEnabled || desperationEnabled) && <div style={{ height: 75, marginTop: "1%" }} />}
 
         <div className="flex-center-row">
             <button onClick={() => confirm("Do you want to exit the game?") && goToStart()} className="exit-game-button app-button">

@@ -58,6 +58,17 @@
     padding: 15px 0px;
     width: 300px;
 
-    position: absolute;
-    bottom: 5%;
+    margin-top: 2.5%;
+    margin-bottom: 1%;
+}
+
+.main-buttons-container {
+    margin-top: 1%;
+
+    display: flex;
+
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
