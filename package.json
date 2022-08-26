@@ -3,9 +3,10 @@
 	"private": true,
 	"version": "0.0.0",
 	"type": "module",
+	"homepage": "/home",
 	"scripts": {
 		"dev": "vite",
-		"build": "vite build",
+		"build": "vite build && python3 build_helper.py",
 		"preview": "vite preview"
 	},
 	"dependencies": {

@@ -8,7 +8,8 @@ const routes = {
 	"/home": () => <HomePage />,
 	"/basics": () => <BasicsPage />,
 	"/game*": () => <GamePage />,
-	"/strategy": () => <StrategyPage />
+	"/strategy": () => <StrategyPage />,
+	"*": () => <HomePage />
 };
 
 export default routes;
