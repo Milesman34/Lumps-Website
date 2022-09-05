@@ -14,7 +14,7 @@ export default ({ score, name, minimum, maximum }) => {
     return (
         <div className="game-score-header-item flex-center-column">
             <div className="game-score-header-id-text flex-center-column">{name}</div>
-            <div className={"game-score-header-score-text flex-center-column" + extraClass}>{pluralized(score, "point")}</div>
+            <div className={"game-score-header-score-text flex-center-column " + extraClass}>{pluralized(score, "point")}</div>
         </div>
     );
 }
