@@ -30,10 +30,12 @@ export default () => {
             return;
         }
 
-        // Separates the names by commas, and parses the split names to remove leading/trailing spaces and remove empty names
+        // Separates the names by commas, and parses the split names to remove leading/trailing/extra spaces and remove empty names
         const separatedNames = formData.playerNames
             .split(",")
-            .map(name => name.trim())
+            .map(name => name
+                .trim()
+                .replace(/ +(?=)/g, " "))
             .filter(name => name !== "");
 
         // Gets the new names by replacing any names not stated with the defaults
