@@ -45,6 +45,8 @@ export default () => {
         <div className="game-start-screen flex-center-column">
             <input type="text" placeholder="Number of Players (1-8)" onChange={handleChange} onKeyPress={handleKeyPress} name="players" value={playersText} className="game-start-input" />
 
+            <input type="text" placeholder="Player Names (comma separated)" onChange={handleChange} name="playerNames" value={playersText} className="game-start-input" />
+
             {warningText === "" ? <span className="game-start-warning flex-center-column"></span> : <div className="game-start-warning flex-center-column">{warningText}</div>}
 
             <button onClick={startGame} className="game-start-button app-button">Start Game</button>
