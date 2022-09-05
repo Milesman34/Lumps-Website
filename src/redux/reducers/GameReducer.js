@@ -285,10 +285,15 @@ export default (state = initialState, action) => {
 
         // Sets the names of players
         case "SET_PLAYER_NAMES":
+            // Gets the names to replace
+            const newNames = action.payload;
+
             return {
                 ...state,
 
-                playerNames: action.payload
+                // We need to replace any names that aren't covered with default names
+                playerNames: [1, 2, 3, 4, 5, 6, 7, 8]
+                    .map(number => number > newNames.length ? `Player ${number}` : newNames[number - 1])
             }
 
         default:

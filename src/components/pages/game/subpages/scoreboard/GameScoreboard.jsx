@@ -19,8 +19,8 @@ export default () => {
     // Headers for the table that display the players
     const playerHeaders = Array(numPlayers)
         .fill(0)
-        .map((number, index) =>
-            <div className="scoreboard-player-header-item flex-center-column" key={number}>
+        .map((_, index) =>
+            <div className="scoreboard-player-header-item flex-center-column" key={index}>
                 {playerNames[index]}
             </div>
         );
@@ -46,12 +46,16 @@ export default () => {
 
     const minimum = Math.min.apply(null, lastNonNull);
 
-    // Gets the remaining rows for the table
-    const remainingRows = scoreboard
+    // Gets the rows for the table
+    const scoreboardRows = scoreboard
         .map((scoreboardRow, index) => {
             // Check if this is the only row or it is not the last row
             if (scoreboard.length === 1 || index < scoreboard.length - 1 || scoreboardRow[0] !== null) {
                 return <div key={index} className="scoreboard-score-row" style={{ gridTemplateColumns: `repeat(${numPlayers}, auto)` }}>
+                    {
+                        playerHeaders
+                    }
+
                     {
                         scoreboardRow
                             .map((column, index2) => {
@@ -86,11 +90,7 @@ export default () => {
 
                 <div className="game-scoreboard">
                     <div className="scoreboard-table">
-                        <div className="scoreboard-player-header" style={{ gridTemplateColumns: `repeat(${numPlayers}, auto)` }}>
-                            {playerHeaders}
-                        </div>
-
-                        {remainingRows}
+                        {scoreboardRows}
                     </div>
                 </div>
             }
