@@ -17,7 +17,7 @@ export default () => {
     const scoreElements = scores.map((score, index) => <GameScoreHeaderItem key={index} score={score} name={playerNames[index]} minimum={minimum} maximum={maximum} />);
 
     return (
-        <div className="game-score-header" style={{ gridTemplateColumns: `repeat(${scores.length}, auto)` }}>
+        <div className="game-score-header">
             {scoreElements}
         </div>
     );

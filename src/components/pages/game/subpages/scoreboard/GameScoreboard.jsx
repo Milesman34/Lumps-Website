@@ -86,7 +86,7 @@ export default () => {
 
                 <div className="game-scoreboard">
                     <div className="scoreboard-table">
-                        <div className="scoreboard-score-row" style={{ gridTemplateColumns: `repeat(${numPlayers}, auto)` }}>
+                        <div className="scoreboard-score-row">
                             {playerHeaders}
                         </div>
                         
