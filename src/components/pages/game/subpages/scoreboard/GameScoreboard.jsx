@@ -53,10 +53,6 @@ export default () => {
             if (scoreboard.length === 1 || index < scoreboard.length - 1 || scoreboardRow[0] !== null) {
                 return <div key={index} className="scoreboard-score-row" style={{ gridTemplateColumns: `repeat(${numPlayers}, auto)` }}>
                     {
-                        playerHeaders
-                    }
-
-                    {
                         scoreboardRow
                             .map((column, index2) => {
                                 // Figures out what class should be used for minimum/maximum
@@ -90,6 +86,10 @@ export default () => {
 
                 <div className="game-scoreboard">
                     <div className="scoreboard-table">
+                        <div className="scoreboard-score-row" style={{ gridTemplateColumns: `repeat(${numPlayers}, auto)` }}>
+                            {playerHeaders}
+                        </div>
+                        
                         {scoreboardRows}
                     </div>
                 </div>
