@@ -93,6 +93,12 @@ export const setExtraChanceActivated = value => ({
     payload: value
 });
 
+// Sets the player names
+export const setPlayerNames = names => ({
+    type: "SET_PLAYER_NAMES",
+    payload: names
+});
+
 // Resets the game (this is not an action, but can be called by passing dispatch)
 export const resetGame = dispatch => {
     dispatch(resetScores());

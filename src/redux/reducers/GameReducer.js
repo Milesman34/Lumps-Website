@@ -283,6 +283,14 @@ export default (state = initialState, action) => {
                 extraChanceActivated: action.payload
             }
 
+        // Sets the names of players
+        case "SET_PLAYER_NAMES":
+            return {
+                ...state,
+
+                playerNames: action.payload
+            }
+
         default:
             return state;
     }
