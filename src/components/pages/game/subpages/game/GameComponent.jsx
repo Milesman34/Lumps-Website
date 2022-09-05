@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux"
-import { selectCanUseCleanSlate, selectCanUseDesperation, selectCurrentIndex, selectCurrentScore, selectDice, selectGameState, selectIsTurnOver, selectRollsLeft, selectWinningPlayer } from "../../../../../redux/selectors/game"
+import { selectCanUseCleanSlate, selectCanUseDesperation, selectCurrentIndex, selectCurrentScore, selectDice, selectGameState, selectIsTurnOver, selectPlayerNames, selectRollsLeft, selectWinningPlayer } from "../../../../../redux/selectors/game"
 import "./GameComponent.css"
 import "../../../../../common.css"
 
@@ -42,6 +42,9 @@ export default () => {
     // Is the desperation button enabled
     const desperationEnabled = useSelector(selectCanUseDesperation);
 
+    // Current player names
+    const playerNames = useSelector(selectPlayerNames);
+
     // Returns the text used to display the number of rolls left
     const rollsLeftText = () => {
         if (isTurnOver) {
@@ -69,7 +72,7 @@ export default () => {
     // The core game component to render
     const gameComponent = <div>
         <div className="game-display-text game-turn-display">
-            Player {currentIndex + 1}'s Turn
+            {playerNames[currentIndex]}'s Turn
         </div>
 
         <div className="game-display-text game-score-display">
@@ -104,7 +107,7 @@ export default () => {
     // The component to render on game end
     const gameEndComponent = <div>
         <div className="winner-display flex-center">
-            Player {winningPlayer + 1} wins!
+            {playerNames[winningPlayer]} wins!
         </div>
 
         <div className="flex-center-column">

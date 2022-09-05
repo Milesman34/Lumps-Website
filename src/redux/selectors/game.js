@@ -58,6 +58,9 @@ const selectCanUseDesperation = state =>
         !state.game.desperationUsed[state.game.currentIndex]
     );
 
+// Selects the names of the players
+const selectPlayerNames = state => state.game.playerNames;
+
 export {
     selectBeingPlayed,
     selectCanRollDice,
@@ -71,6 +74,7 @@ export {
     selectIsTurnOver,
     selectNumMoreDiceToKeep,
     selectNumPlayers,
+    selectPlayerNames,
     selectRollsLeft,
     selectScoreboard,
     selectScores,

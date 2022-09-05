@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import { selectGameState, selectNumPlayers, selectScoreboard } from "../../../../../redux/selectors/game";
+import { selectGameState, selectNumPlayers, selectPlayerNames, selectScoreboard } from "../../../../../redux/selectors/game";
 import "./GameScoreboard.css"
 import "../../../../../common.css"
 
@@ -13,13 +13,15 @@ export default () => {
     // Gets the scoreboard
     const scoreboard = useSelector(selectScoreboard);
 
+    // Gets the player names
+    const playerNames = useSelector(selectPlayerNames);
+
     // Headers for the table that display the players
     const playerHeaders = Array(numPlayers)
         .fill(0)
-        .map((_, index) => index + 1)
-        .map(number =>
+        .map((number, index) =>
             <div className="scoreboard-player-header-item flex-center-column" key={number}>
-                Player {number}
+                {playerNames[index]}
             </div>
         );
 

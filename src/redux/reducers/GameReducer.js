@@ -40,6 +40,9 @@ const initialState = {
     // Has extra chance been activated? (someone reached 100)
     extraChanceActivated: false,
 
+    // The names of the players
+    playerNames: [1, 2, 3, 4, 5, 6, 7, 8].map(number => `Player ${number}`),
+
     // The game's configs
     configs: {
         cleanSlate: {
