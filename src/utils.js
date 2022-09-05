@@ -143,13 +143,46 @@ const localStorageGetOrDefault = (path, defaultValue) => {
     }
 }
 
+// Returns if an array has duplicates
+const hasDuplicates = array => new Set(array).size !== array.length;
+
+// Finds the first duplicate in an array
+const findDuplicate = array => {
+    const arrayElements = new Set();
+
+    for (let elem of array) {
+        if (arrayElements.has(elem))
+            return elem;
+        else
+            arrayElements.add(elem);
+    };
+}
+
+// Check if a name is a reserved name (Player x)
+const isReservedName = (name, numPlayers) => {
+    const words = name.split(" ");
+
+    // Check the first word to see if it is Player, and check the length of the words after that
+    if (words.length !== 2 || words[0] !== "Player")
+        return false;
+
+    // Check the value of the second word
+    const wordValue = parseInt(words[1]);
+
+    // We need to check if it is an integer between 1 and the number of players
+    return !(isNaN(wordValue) || words[1].includes(".") || wordValue <= 0 || wordValue > numPlayers);
+}
+
 export {
     calculateScore,
     canRollDice,
     capitalize,
     checkboxLabel,
+    findDuplicate,
     getWinningPlayer,
+    hasDuplicates,
     isEven,
+    isReservedName,
     isTurnOver,
     localStorageGetOrDefault,
     numMoreDiceToKeep,
