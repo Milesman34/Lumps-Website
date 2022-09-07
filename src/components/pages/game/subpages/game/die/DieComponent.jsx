@@ -37,7 +37,7 @@ export default ({ die, index }) => {
                     "50,0 100,30 100,70 50,100 0,70 0,30";
 
             return <div className="die-svg-container">
-                <svg height="100" width="100" className="die-svg">
+                <svg width="100" height="100" className="die-svg">
                     <polygon points={polygonPoints} onClick={handleClick} className={`die-polygon flex-center-column ${colorClass}`}>
                     </polygon>
                 </svg>
@@ -59,7 +59,4 @@ export default ({ die, index }) => {
 
     // We need to check if die graphics are enabled or not
     return dieGraphicsEnabled ? getGraphicsDiv(die.sides) : makeSquareDie();
-    // <div onClick={handleClick} className={`shaped-die flex-center-column ${colorClass}`}>
-    //     <div className="die-value">{die.value}</div>
-    // </div>
 }

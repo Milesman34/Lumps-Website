@@ -46,14 +46,6 @@
     fill: rgb(195, 195, 195);
 }
 
-.shaped-die {
-    margin: 25px;
-    user-select: none;
-    border: 2px solid black;
-    width: 100px;
-    height: 100px;
-}
-
 .die-svg-container {
     width: 100px;
     height: 100px;

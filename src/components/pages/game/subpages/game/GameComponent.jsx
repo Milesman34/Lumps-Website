@@ -83,8 +83,10 @@ export default () => {
             {rollsLeftText()}
         </div>
 
-        <div className="game-dice-container flex-center-row">
-            {dieComponents}
+        <div className="flex-center-row">
+            <div className="game-dice-container flex-center-row">
+                {dieComponents}
+            </div>
         </div>
 
         {isTurnOver ? <div style={{ height: 75, marginTop: "1%" }} /> : <GameRollButton />}

@@ -30,6 +30,7 @@
 
 .game-dice-container {
     margin-top: 2.5%;
+    flex-wrap: wrap;
 }
 
 .winner-display {
