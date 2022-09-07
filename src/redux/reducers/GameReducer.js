@@ -55,7 +55,8 @@ const initialState = {
             repeatable: localStorageGetOrDefault("desperationRepeatable", defaultConfigs.desperation.repeatable)
         },
 
-        extraChance: localStorageGetOrDefault("extraChance", defaultConfigs.extraChance)
+        extraChance: localStorageGetOrDefault("extraChance", defaultConfigs.extraChance),
+        dieGraphics: localStorageGetOrDefault("dieGraphics", defaultConfigs.dieGraphics)
     }
 }
 

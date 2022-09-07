@@ -19,5 +19,8 @@ export const defaultConfigs = {
     },
 
     // Is extra chance enabled?
-    extraChance: false
+    extraChance: false,
+
+    // Are the die graphics enabled?
+    dieGraphics: false
 }

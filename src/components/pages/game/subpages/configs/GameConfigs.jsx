@@ -20,7 +20,8 @@ export default () => {
         cleanSlatePerTurn: configs.cleanSlate.perTurn.toString(),
         desperationEnabled: configs.desperation.enabled,
         desperationRepeatable: configs.desperation.repeatable,
-        extraChance: configs.extraChance
+        extraChance: configs.extraChance,
+        dieGraphics: configs.dieGraphics
     });
 
     // Handles changes to the form
@@ -49,7 +50,8 @@ export default () => {
                 repeatable: formData.desperationRepeatable
             },
 
-            extraChance: formData.extraChance
+            extraChance: formData.extraChance,
+            dieGraphics: formData.dieGraphics
         }));
 
         // Saves to localstorage
@@ -58,6 +60,7 @@ export default () => {
         localStorage.setItem("desperationEnabled", formData.desperationEnabled.toString());
         localStorage.setItem("desperationRepeatable", formData.desperationRepeatable.toString());
         localStorage.setItem("extraChance", formData.extraChance.toString());
+        localStorage.setItem("dieGraphics", formData.dieGraphics.toString());
     }, [formData]);
 
     return (
@@ -116,6 +119,16 @@ export default () => {
                     <div className="form-checkbox">
                         <input type="checkbox" id="extra-chance" name="extraChance" checked={formData.extraChance} onChange={handleChange} />
                         <label htmlFor="extra-chance">{checkboxLabel(formData.extraChance)}</label>
+                    </div>
+                </div>
+
+                <div className="form-area-title" style={{ margin: 10 }}>Die Graphics</div>
+                <div className="form-area-description">Should the dice have their own shapes based on the number of sides?</div>
+
+                <div className="form-inputs-container">
+                    <div className="form-checkbox">
+                        <input type="checkbox" id="die-graphics" name="dieGraphics" checked={formData.dieGraphics} onChange={handleChange} />
+                        <label htmlFor="die-graphics">{checkboxLabel(formData.dieGraphics)}</label>
                     </div>
                 </div>
             </div>
