@@ -19,28 +19,74 @@
     color: blue;
 }
 
-.die-unlocked:hover {
-    background-color: white;
-}
-
 .die-unlocked {
     background-color: rgb(222, 222, 222);
+    fill: rgb(222, 222, 222);
     cursor: pointer;
 }
 
 .die-unlocked:hover {
     background-color: rgb(235, 235, 235);
+    fill: rgb(235, 235, 235);
 }
 
 .die-locked {
     background-color: rgb(165, 165, 165);
+    fill: rgb(165, 165, 165);
 }
 
 .die-will-be-locked {
     background-color: rgb(180, 180, 180);
+    fill: rgb(180, 180, 180);
     cursor: pointer;
 }
 
 .die-will-be-locked:hover {
     background-color: rgb(195, 195, 195);
+    fill: rgb(195, 195, 195);
+}
+
+.shaped-die {
+    margin: 25px;
+    user-select: none;
+    border: 2px solid black;
+    width: 100px;
+    height: 100px;
+}
+
+.die-svg-container {
+    width: 100px;
+    height: 100px;
+    margin: 25px;
+
+    display: grid;
+    grid-template-rows: 100%;
+    grid-template-columns: 100%;
+}
+
+.die-svg {
+    width: 100px;
+    height: 100px;
+
+    grid-row: 1;
+    grid-column: 1;
+}
+
+.die-polygon {
+    user-select: none;
+    stroke: black;
+    stroke-width: 2;
+}
+
+.die-polygon-value {
+    grid-row: 1;
+    grid-column: 1;
+
+    user-select: none;
+    pointer-events: none;
+
+    background-color: rgba(0, 0, 0, 0);
+
+    width: 100px;
+    height: 100px;
 }
