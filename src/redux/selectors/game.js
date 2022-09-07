@@ -61,6 +61,9 @@ const selectCanUseDesperation = state =>
 // Selects the names of the players
 const selectPlayerNames = state => state.game.playerNames;
 
+// Selects if the die graphics are enabled?
+const selectDieGraphicsEnabled = state => state.game.configs.dieGraphics;
+
 export {
     selectBeingPlayed,
     selectCanRollDice,
@@ -70,6 +73,7 @@ export {
     selectCurrentIndex,
     selectCurrentScore,
     selectDice,
+    selectDieGraphicsEnabled,
     selectGameState,
     selectIsTurnOver,
     selectNumMoreDiceToKeep,
