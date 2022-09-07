@@ -49,7 +49,6 @@ export default () => {
 
             // Sets the new warning text, checking if the duplicate is a reserved name
             const reservedText = isReservedName(duplicate, parsedNumber) ? "reserved" : "duplicate";
-            console.log(duplicate, reservedText);
 
             setWarningText(`The name ${duplicate} is a ${reservedText} name!`);
             return;
